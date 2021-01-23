@@ -10,14 +10,13 @@ double cpp_ftoc(const char* str) {
 }
 
 double cpp_ctof(const char* str) {
-
-	return 0;
+	double c = strtod(str, nullptr);
+	return ((c * 1.8) + 32);
 }
 
-int main() {
-	std::string str = "temperature --ftoc -40";
-
-	char* c = const_cast<char*>(str.c_str());
+int main(int argc, char* str) {
+	std::string test = "temperature --ftoc -40";
+	char* c = const_cast<char*>(test.c_str());
 	//cpp_ftoc(c);
 	std::cout << cpp_ftoc(c);
 	return 0;
