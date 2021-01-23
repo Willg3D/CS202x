@@ -4,10 +4,10 @@
  * Made By William Glass
  */
 #include <Wire.h> 
-#include <LiquidCrystal_I2C.h>
-#include <ezButton.h>
-#include <EEPROM.h>
-#include "HX711.h"
+#include <LiquidCrystal_I2C.h> // Used for 
+#include <ezButton.h> // Used to deal with button debounce issue
+#include <EEPROM.h> // Needed to save to EEPROM
+#include "HX711.h" // Used so that a scale can be connected to arduino
 
 
 /////// Set the LCD address to 0x27 for a 16 chars and 2 line display ////////
@@ -89,9 +89,9 @@ void loop(){
   Serial.print(" | P3: ");Serial.print(port3);
   Serial.print(" | P4: ");Serial.print(port4);
   Serial.print(" | P5: ");Serial.print(port5); Serial.print(" |\n");
-  BUTTON_PIN_Left.loop(); // Needed to loop Button Controlls
-  BUTTON_PIN_Middle.loop(); // Needed to loop Button Controlls
-  BUTTON_PIN_Right.loop();  // Needed to loop Button Controlls
+  BUTTON_PIN_Left.loop(); // Needed to loop Button Controls
+  BUTTON_PIN_Middle.loop(); // Needed to loop Button Controls
+  BUTTON_PIN_Right.loop();  // Needed to loop Button Controls
   buttonNavigate(); // Handles button input and crude menu system
   
   if (BUTTON_PIN_Middle.isReleased()){buttonReset = true;} //Allows loop to run after button.isPressed()
