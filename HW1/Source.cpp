@@ -23,13 +23,16 @@ void randomVect(std::vector<int> &rVector,int vectSize,int vectMin,int vectMax) 
 }
 
 void searchVect(int size) {
-	cout << "Running Size " << size << " Search..." << endl;
+	cout << "Making size " << size << " random vector..." << endl;
+	std::vector<int> rVector; // random vector size 10
+	randomVect(rVector, size, 0, size);
+	std::vector<int> rNum;// random num vector to use search
+	rNum.push_back(randomNum(0, size)); // random value to search
+	cout << "Done making vector." << endl;
+
+	cout << "Running size " << size << " search..." << endl;
 	Stopwatch vector_size;
 	for (size_t i = 0; i < 5; ++i) {
-		std::vector<int> rVector; // random vector size 10
-		randomVect(rVector, size, 0, size);
-		std::vector<int> rNum;// random num vector to use search
-		rNum.push_back(randomNum(0, size)); // random value to search
 
 		vector_size.start();
 		std::search(rVector.begin(), rVector.end(), rNum.begin(), rNum.end());
