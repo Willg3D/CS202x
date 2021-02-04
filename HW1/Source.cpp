@@ -32,6 +32,8 @@ void searchVect(int size) {
 	std::vector<int> rNum;// random num vector to use search
 	rNum.push_back(randomNum(0, size)); // random value to search
 	cout << "Done making vector." << endl;
+
+
 	cout << "Running size " << size << " Tests" << endl << endl;
 	Stopwatch timer;
 	for (size_t i = 0; i < 5; ++i) {
@@ -76,6 +78,29 @@ void searchVect(int size) {
 	cout << "Sec: " << averageTime_sec << endl;;
 	cout << "miliSec: " << averageTime_msec << endl;
 	cout << endl;
+
+	averageTime_sec = 0.0;
+	averageTime_msec = 0.0;
+
+	for (size_t i = 0; i < 5; ++i) {
+		timer.start();
+		std::binary_search(rVector.begin(), rVector.end(), rNum[0]);
+		timer.stop();
+
+		averageTime_sec += timer.time_sec();
+		averageTime_msec += timer.time_msec();
+
+	}
+
+	averageTime_sec = averageTime_sec / 5.0;
+	averageTime_msec = averageTime_msec / 5.0;
+
+	cout << "Average Binary Search Time: " << endl;
+	cout << "Sec: " << averageTime_sec << endl;;
+	cout << "miliSec: " << averageTime_msec << endl;
+	cout << endl;
+
+
 }
 
 
