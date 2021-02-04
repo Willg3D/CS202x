@@ -10,12 +10,14 @@ class Stopwatch
 public:
 	void Start();
 	void Stop();
+	double time_sec();
+	double time_msec();
 	Stopwatch();
 private:
 	std::chrono::steady_clock::time_point start_time;
 	std::chrono::steady_clock::time_point end_time;
 	std::chrono::duration<double> elapsed_time;
-	double time_sec;
-	double time_msec;
+	double tsec;
+	double tmsec;
 };
 #endif

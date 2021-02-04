@@ -10,4 +10,5 @@ int main() {
 	}
 	std::cout << x << std::endl;
 	test.Stop();
+	std::cout << test.time_msec();
 }
