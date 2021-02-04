@@ -27,29 +27,52 @@ void searchVect(int size) {
 	double averageTime_msec = 0;
 
 	cout << "Making size " << size << " random vector..." << endl;
-	std::vector<int> rVector; // random vector size 10
-	randomVect(rVector, size, 0, size);
+	std::vector<int> rVector; // vector made to be random
+	randomVect(rVector, size, 0, size); // rvector to assigned size and a max of assigned size
 	std::vector<int> rNum;// random num vector to use search
 	rNum.push_back(randomNum(0, size)); // random value to search
 	cout << "Done making vector." << endl;
-
-	cout << "Running size " << size << " search..." << endl;
-	Stopwatch vector_size;
+	cout << "Running size " << size << " Tests" << endl << endl;
+	Stopwatch timer;
 	for (size_t i = 0; i < 5; ++i) {
 
-		vector_size.start();
+		timer.start();
 		std::search(rVector.begin(), rVector.end(), rNum.begin(), rNum.end());
-		vector_size.stop();
+		timer.stop();
 
-		averageTime_sec += vector_size.time_sec();
-		averageTime_msec += vector_size.time_msec();
+		averageTime_sec += timer.time_sec();
+		averageTime_msec += timer.time_msec();
 
 	}
 
 	averageTime_sec = averageTime_sec / 5.0;
 	averageTime_msec = averageTime_msec / 5.0;
 
-	cout << "Average Time: " << endl;
+	cout << "Average Search Time: " << endl;
+	cout << "Sec: " << averageTime_sec << endl;;
+	cout << "miliSec: " << averageTime_msec << endl;
+	cout << endl;
+
+	averageTime_sec = 0.0;
+	averageTime_msec = 0.0;
+
+	std::vector<int> sorted_rVector;
+
+	for (size_t i = 0; i < 5; ++i) {
+		sorted_rVector = rVector;
+		timer.start();
+		std::sort(rVector.begin(), rVector.end());
+		timer.stop();
+
+		averageTime_sec += timer.time_sec();
+		averageTime_msec += timer.time_msec();
+
+	}
+	
+	averageTime_sec = averageTime_sec / 5.0;
+	averageTime_msec = averageTime_msec / 5.0;
+
+	cout << "Average Sort Time: " << endl;
 	cout << "Sec: " << averageTime_sec << endl;;
 	cout << "miliSec: " << averageTime_msec << endl;
 	cout << endl;
