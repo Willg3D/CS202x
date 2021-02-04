@@ -22,7 +22,7 @@ void randomVect(std::vector<int> &rVector,int vectSize,int vectMin,int vectMax) 
 	}
 }
 
-void searchVect(int size) {
+void testVector(int size) {
 	double averageTime_sec = 0;
 	double averageTime_msec = 0;
 
@@ -100,20 +100,48 @@ void searchVect(int size) {
 	cout << "miliSec: " << averageTime_msec << endl;
 	cout << endl;
 
+	averageTime_sec = 0.0;
+	averageTime_msec = 0.0;
 
+	std::vector<int> copy_rVector;
+
+	for (size_t i = 0; i < 5; ++i) {
+		copy_rVector = rVector;
+		timer.start();
+		std::reverse(rVector.begin(), rVector.end());
+		timer.stop();
+
+		averageTime_sec += timer.time_sec();
+		averageTime_msec += timer.time_msec();
+
+	}
+
+	averageTime_sec = averageTime_sec / 5.0;
+	averageTime_msec = averageTime_msec / 5.0;
+
+	cout << "Average Reverse Time: " << endl;
+	cout << "Sec: " << averageTime_sec << endl;;
+	cout << "miliSec: " << averageTime_msec << endl;
+	cout << endl;
 }
 
 
 int main() {
 	//std::vector<double> secTime, msecTime;
 
-	searchVect(10);
-	searchVect(100);
-	searchVect(1000);
-	searchVect(10000);
-	searchVect(100000);
-	searchVect(1000000);
-	searchVect(10000000);
+	testVector(10);
+	cout << "----------------------------------------" << endl;
+	testVector(100);
+	cout << "----------------------------------------" << endl;
+	testVector(1000);
+	cout << "----------------------------------------" << endl;
+	testVector(10000);
+	cout << "----------------------------------------" << endl;
+	testVector(100000);
+	cout << "----------------------------------------" << endl;
+	testVector(1000000);
+	cout << "----------------------------------------" << endl;
+	testVector(10000000);
 
 
 	
