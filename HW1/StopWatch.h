@@ -12,7 +12,10 @@ public:
 	void Stop();
 	Stopwatch();
 private:
-	std::chrono::steady_clock::time_point start;
-	std::chrono::steady_clock::time_point end;
+	std::chrono::steady_clock::time_point start_time;
+	std::chrono::steady_clock::time_point end_time;
+	std::chrono::duration<double> elapsed_time;
+	double time_sec;
+	double time_msec;
 };
 #endif
