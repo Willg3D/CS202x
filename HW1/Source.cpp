@@ -23,6 +23,9 @@ void randomVect(std::vector<int> &rVector,int vectSize,int vectMin,int vectMax) 
 }
 
 void searchVect(int size) {
+	double averageTime_sec = 0;
+	double averageTime_msec = 0;
+
 	cout << "Making size " << size << " random vector..." << endl;
 	std::vector<int> rVector; // random vector size 10
 	randomVect(rVector, size, 0, size);
@@ -38,11 +41,17 @@ void searchVect(int size) {
 		std::search(rVector.begin(), rVector.end(), rNum.begin(), rNum.end());
 		vector_size.stop();
 
-		cout << "Run " << i + 1 << ":" << endl;
-		cout << "Sec: " << vector_size.time_sec() << endl;;
-		cout << "miliSec: " << vector_size.time_msec() << endl;
+		averageTime_sec += vector_size.time_sec();
+		averageTime_msec += vector_size.time_msec();
+
 	}
 
+	averageTime_sec = averageTime_sec / 5.0;
+	averageTime_msec = averageTime_msec / 5.0;
+
+	cout << "Average Time: " << endl;
+	cout << "Sec: " << averageTime_sec << endl;;
+	cout << "miliSec: " << averageTime_msec << endl;
 	cout << endl;
 }
 
@@ -53,7 +62,10 @@ int main() {
 	searchVect(10);
 	searchVect(100);
 	searchVect(1000);
+	searchVect(10000);
+	searchVect(100000);
 	searchVect(1000000);
+	searchVect(10000000);
 
 
 	
