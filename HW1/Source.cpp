@@ -24,23 +24,23 @@ void randomVect(std::vector<int> &rVector,int vectSize,int vectMin,int vectMax) 
 
 
 int main() {
-	std::vector<double> secTime, msecTime;
+	//std::vector<double> secTime, msecTime;
 
 	cout << "Running Size 10 Search..." << endl;
 	Stopwatch vector_size_10;
 	for (size_t i = 0; i < 5; ++i){
 		std::vector<int> rVector10; // random vector size 10
 		randomVect(rVector10, 10, 0, 10);
-		int rNum10 = randomNum(0, 10); // random value to search
+		std::vector<int> rNum10;// random num vector to use search
+		rNum10.push_back(randomNum(0, 10)); // random value to search
 
 		vector_size_10.start();
-		//std::search(rVector10.begin(), rVector10.end(), rNum10);
+		std::search(rVector10.begin(), rVector10.end(), rNum10.begin() , rNum10.end());
 		vector_size_10.stop();
 
 		cout << "Run " << i + 1 << ":" << endl;
 		cout << "Sec: " << vector_size_10.time_sec() << endl;;
 		cout << "miliSec: " << vector_size_10.time_msec() << endl;
-
 	}
 	
 
