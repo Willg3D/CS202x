@@ -6,13 +6,8 @@ using std::endl;
 #include <vector>
 #include "StopWatch.h"
 
+void randomVect(std::vector<int> &rVector,int vectSize,int vectMin,int vectMax) {
 
-int main() {
-	//Stopwatch test;
-	std::vector<int> rVector; // random vector
-	int vectSize = 1000;
-	int vectMin = 0; int vectMax = 3000;
-	
 	std::random_device rDevice;
 	std::mt19937 generator(rDevice());
 	std::uniform_int_distribution<int> distribution(vectMin, vectMax);
@@ -20,6 +15,15 @@ int main() {
 	for (size_t i = 0; i < vectSize; ++i) {
 		rVector.push_back(distribution(generator));
 	}
+
+
+}
+int main() {
+	//Stopwatch test;
+	std::vector<int> rVector; // random vector
+	randomVect(rVector, 1000, 0, 3000);
+
+
 
 	
 	//td::cout << x << std::endl;
