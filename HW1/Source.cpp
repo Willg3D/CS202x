@@ -6,6 +6,7 @@ using std::endl;
 #include <vector>
 #include "StopWatch.h"
 
+//uses mt19937 to generate a randnom in a given range
 int randomNum(int min, int max) {
 	std::random_device rDevice;
 	std::mt19937 generator(rDevice());
@@ -14,6 +15,7 @@ int randomNum(int min, int max) {
 	return distribution(generator);
 }
 
+// makes random vector of a given size
 void randomVect(std::vector<int> &rVector,int vectSize,int vectMin,int vectMax) {
 	rVector.clear(); // clears out vector
 	// Pushes random Values into vector.
@@ -22,10 +24,12 @@ void randomVect(std::vector<int> &rVector,int vectSize,int vectMin,int vectMax) 
 	}
 }
 
+// Time tests for vectors based on given size
 void testVector(int size) {
-	double averageTime_sec = 0;
-	double averageTime_msec = 0;
+	double averageTime_sec = 0; // used for average time sec
+	double averageTime_msec = 0; // used for average time sec
 
+	// Makes random int Vector (Very Time Consuming)
 	cout << "Making size " << size << " random vector..." << endl;
 	std::vector<int> rVector; // vector made to be random
 	randomVect(rVector, size, 0, size); // rvector to assigned size and a max of assigned size
@@ -33,9 +37,10 @@ void testVector(int size) {
 	rNum.push_back(randomNum(0, size)); // random value to search
 	cout << "Done making vector." << endl;
 
-
 	cout << "Running size " << size << " Tests" << endl << endl;
-	Stopwatch timer;
+	Stopwatch timer; // timer using Stopwatch class
+
+	// Search tests
 	for (size_t i = 0; i < 5; ++i) {
 
 		timer.start();
@@ -47,6 +52,7 @@ void testVector(int size) {
 
 	}
 
+	// averaging time
 	averageTime_sec = averageTime_sec / 5.0;
 	averageTime_msec = averageTime_msec / 5.0;
 
@@ -55,10 +61,11 @@ void testVector(int size) {
 	cout << "miliSec: " << averageTime_msec << endl;
 	cout << endl;
 
-	averageTime_sec = 0.0;
+	// Sorting Tests
+	averageTime_sec = 0.0; // needed to reset vaules for averaging
 	averageTime_msec = 0.0;
 
-	std::vector<int> sorted_rVector;
+	std::vector<int> sorted_rVector; // vector that will be sorted
 
 	for (size_t i = 0; i < 5; ++i) {
 		sorted_rVector = rVector;
@@ -79,6 +86,7 @@ void testVector(int size) {
 	cout << "miliSec: " << averageTime_msec << endl;
 	cout << endl;
 
+	// Binary Search Tests
 	averageTime_sec = 0.0;
 	averageTime_msec = 0.0;
 
@@ -100,6 +108,7 @@ void testVector(int size) {
 	cout << "miliSec: " << averageTime_msec << endl;
 	cout << endl;
 
+	// Reverse Algorithm Tests
 	averageTime_sec = 0.0;
 	averageTime_msec = 0.0;
 
@@ -122,31 +131,22 @@ void testVector(int size) {
 	cout << "Average Reverse Time: " << endl;
 	cout << "Sec: " << averageTime_sec << endl;;
 	cout << "miliSec: " << averageTime_msec << endl;
-	cout << endl;
+	cout << endl <<"----------------------------------------" << endl;
+
 }
 
 
 int main() {
-	//std::vector<double> secTime, msecTime;
 
+	// code to test Search, Sort, Binary Search, and Reverse Algorithms
+	// based on provided size.
 	testVector(10);
-	cout << "----------------------------------------" << endl;
 	testVector(100);
-	cout << "----------------------------------------" << endl;
 	testVector(1000);
-	cout << "----------------------------------------" << endl;
 	testVector(10000);
-	cout << "----------------------------------------" << endl;
 	testVector(100000);
-	cout << "----------------------------------------" << endl;
 	testVector(1000000);
-	cout << "----------------------------------------" << endl;
 	testVector(10000000);
-
-
-	
-	//td::cout << x << std::endl;
-	//test.stop();
-	//std::cout << test.time_msec();
+	testVector(100000000);
 	return 0;
 }
