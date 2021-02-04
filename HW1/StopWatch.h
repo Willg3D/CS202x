@@ -8,8 +8,8 @@
 class Stopwatch
 {
 public:
-	void Start();
-	void Stop();
+	void start();
+	void stop();
 	double time_sec();
 	double time_msec();
 	Stopwatch();

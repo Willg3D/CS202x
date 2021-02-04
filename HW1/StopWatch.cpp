@@ -2,12 +2,12 @@
 #include<chrono>
 #include "StopWatch.h"
 
-void Stopwatch::Start()
+void Stopwatch::start()
 {
 	start_time = std::chrono::steady_clock::now();
 }
 
-void Stopwatch::Stop()
+void Stopwatch::stop()
 {
 	end_time = std::chrono::steady_clock::now();
 	elapsed_time = end_time-start_time;
