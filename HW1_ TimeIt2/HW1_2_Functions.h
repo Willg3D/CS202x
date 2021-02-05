@@ -35,4 +35,8 @@ void testVector(string name);
 // Time tests for list based on given size
 void testList(string name);
 
+// Time tests for set based on given size
+void testSet(string name);
+
+
 #endif
