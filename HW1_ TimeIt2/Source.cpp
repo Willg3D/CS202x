@@ -183,18 +183,33 @@ void readFile_list(string filename, std::list<string>& book) {
 int main() {
 	std::vector<string> test;
 	Stopwatch vectorTime;
-	readFile_vector("Anthem.txt", test);
-	//for (size_t i = 0; i < test.size(); i++){
-	//	cout << test[i] << endl;
-	//}
-	vectorTime.stop();
-	cout << vectorTime.time_msec();
+	double vector_msec_average = 0;
+
+	for (size_t i = 0; i < 5; i++){
+		test.clear();
+		vectorTime.start();
+		readFile_vector("Anthem.txt", test);
+		vectorTime.stop();
+		vector_msec_average += vectorTime.time_msec();
+	}
+
+	cout << "Vector msec:" << vector_msec_average / 5.0 << endl;;
+
 	
 	std::list<string> test2;
 	Stopwatch listTime;
-	readFile_list("Anthem.txt", test2);
-	listTime.stop();
-	cout << "\n" << listTime.time_msec();
+	double list_msec_average = 0;
+
+	for (size_t i = 0; i < 5; i++) {
+		test2.clear();
+		listTime.start();
+		readFile_list("Anthem.txt", test2);
+		listTime.stop();
+		list_msec_average += listTime.time_msec();
+	}
+
+	cout << "List msec:" << list_msec_average / 5.0 << endl;;
+
 	//for (size_t i = 0; i < test.size(); i++) {
 	//	cout << test[i] << endl;
 	//}
