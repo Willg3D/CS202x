@@ -31,117 +31,6 @@ void randomVect(std::vector<int> &rVector,int vectSize,int vectMin,int vectMax) 
 	}
 }
 
-// Time tests for vectors based on given size
-void testVector(int size) {
-	double averageTime_sec = 0; // used for average time sec
-	double averageTime_msec = 0; // used for average time sec
-
-	// Makes random int Vector (Very Time Consuming)
-	cout << "Making size " << size << " random vector..." << endl;
-	std::vector<int> rVector; // vector made to be random
-	randomVect(rVector, size, 0, size); // rvector to assigned size and a max of assigned size
-	std::vector<int> rNum;// random num vector to use search
-	rNum.push_back(randomNum(0, size)); // random value to search
-	cout << "Done making vector." << endl;
-
-	cout << "Running size " << size << " Tests" << endl << endl;
-	Stopwatch timer; // timer using Stopwatch class
-
-	// Search tests
-	for (size_t i = 0; i < 5; ++i) {
-
-		timer.start();
-		std::search(rVector.begin(), rVector.end(), rNum.begin(), rNum.end());
-		timer.stop();
-
-		averageTime_sec += timer.time_sec();
-		averageTime_msec += timer.time_msec();
-
-	}
-
-	// averaging time
-	averageTime_sec = averageTime_sec / 5.0;
-	averageTime_msec = averageTime_msec / 5.0;
-
-	cout << "Average Search Time: " << endl;
-	cout << "Sec: " << averageTime_sec << endl;;
-	cout << "miliSec: " << averageTime_msec << endl;
-	cout << endl;
-
-	// Sorting Tests
-	averageTime_sec = 0.0; // needed to reset vaules for averaging
-	averageTime_msec = 0.0;
-
-	std::vector<int> sorted_rVector; // vector that will be sorted
-
-	for (size_t i = 0; i < 5; ++i) {
-		sorted_rVector = rVector;
-		timer.start();
-		std::sort(rVector.begin(), rVector.end());
-		timer.stop();
-
-		averageTime_sec += timer.time_sec();
-		averageTime_msec += timer.time_msec();
-
-	}
-	
-	averageTime_sec = averageTime_sec / 5.0;
-	averageTime_msec = averageTime_msec / 5.0;
-
-	cout << "Average Sort Time: " << endl;
-	cout << "Sec: " << averageTime_sec << endl;;
-	cout << "miliSec: " << averageTime_msec << endl;
-	cout << endl;
-
-	// Binary Search Tests
-	averageTime_sec = 0.0;
-	averageTime_msec = 0.0;
-
-	for (size_t i = 0; i < 5; ++i) {
-		timer.start();
-		std::binary_search(rVector.begin(), rVector.end(), rNum[0]);
-		timer.stop();
-
-		averageTime_sec += timer.time_sec();
-		averageTime_msec += timer.time_msec();
-
-	}
-
-	averageTime_sec = averageTime_sec / 5.0;
-	averageTime_msec = averageTime_msec / 5.0;
-
-	cout << "Average Binary Search Time: " << endl;
-	cout << "Sec: " << averageTime_sec << endl;;
-	cout << "miliSec: " << averageTime_msec << endl;
-	cout << endl;
-
-	// Reverse Algorithm Tests
-	averageTime_sec = 0.0;
-	averageTime_msec = 0.0;
-
-	std::vector<int> copy_rVector;
-
-	for (size_t i = 0; i < 5; ++i) {
-		copy_rVector = rVector;
-		timer.start();
-		std::reverse(rVector.begin(), rVector.end());
-		timer.stop();
-
-		averageTime_sec += timer.time_sec();
-		averageTime_msec += timer.time_msec();
-
-	}
-
-	averageTime_sec = averageTime_sec / 5.0;
-	averageTime_msec = averageTime_msec / 5.0;
-
-	cout << "Average Reverse Time: " << endl;
-	cout << "Sec: " << averageTime_sec << endl;;
-	cout << "miliSec: " << averageTime_msec << endl;
-	cout << endl <<"----------------------------------------" << endl;
-
-}
-
 // reads ever word from text file and pushes back to a vector
 void readFile_vector(string filename, std::vector<string>& book) {
 	std::ifstream open(filename);
@@ -154,8 +43,8 @@ void readFile_vector(string filename, std::vector<string>& book) {
 			string data;
 			std::getline(open, data);
 			std::istringstream iss(data);
-			
-			while (iss >> word){
+
+			while (iss >> word) {
 				book.push_back(word);
 			}
 		}
@@ -200,22 +89,155 @@ void readFile_set(string filename, std::set<string>& book) {
 	}
 }
 
-int main() {
-	std::vector<string> vectorBook;
-	Stopwatch vectorTime;
-	double vector_msec_average = 0;
+// Time tests for vectors based on given size
+void testVector(string name) {
+	double averageTime_sec = 0; // used for average time sec
+	double averageTime_msec = 0; // used for average time sec
 
-	for (size_t i = 0; i < 5; i++){
-		vectorBook.clear();
-		vectorTime.start();
-		readFile_vector("Anthem.txt", vectorBook);
-		vectorTime.stop();
-		vector_msec_average += vectorTime.time_msec();
+	std::vector<string> rWord;// random word vector to use search
+
+	cout << "Running " << name << " Book Tests" << endl << endl;
+	std::vector<string> book;
+
+	Stopwatch timer; // timer using Stopwatch class
+
+	for (size_t i = 0; i < 5; i++) {
+		book.clear();
+		timer.start();
+		readFile_vector(name, book);
+		timer.stop();
+		averageTime_sec += timer.time_sec();
+		averageTime_msec += timer.time_msec();
 	}
 
-	cout << "Vector msec:" << vector_msec_average / 5.0 << endl;;
+	averageTime_sec = averageTime_sec / 5.0;
+	averageTime_msec = averageTime_msec / 5.0;
 
-	
+	cout << "Average Vector Read Time: " << endl;
+	cout << "Sec: " << averageTime_sec << endl;;
+	cout << "miliSec: " << averageTime_msec << endl;
+	cout << endl;
+
+
+
+	// Search tests
+	for (size_t i = 0; i < 5; ++i) {
+		rWord.push_back(book[randomNum(0, book.size())]); // random value to search
+
+		timer.start();
+		std::search(book.begin(), book.end(), rWord.begin(), rWord.end());
+		timer.stop();
+
+		averageTime_sec += timer.time_sec();
+		averageTime_msec += timer.time_msec();
+
+	}
+
+	// averaging time
+	averageTime_sec = averageTime_sec / 5.0;
+	averageTime_msec = averageTime_msec / 5.0;
+
+	cout << "Average Search Time: " << endl;
+	cout << "Sec: " << averageTime_sec << endl;;
+	cout << "miliSec: " << averageTime_msec << endl;
+	cout << endl;
+
+	//// Sorting Tests
+	//averageTime_sec = 0.0; // needed to reset vaules for averaging
+	//averageTime_msec = 0.0;
+
+	//std::vector<int> sorted_rVector; // vector that will be sorted
+
+	//for (size_t i = 0; i < 5; ++i) {
+	//	sorted_rVector = rVector;
+	//	timer.start();
+	//	std::sort(rVector.begin(), rVector.end());
+	//	timer.stop();
+
+	//	averageTime_sec += timer.time_sec();
+	//	averageTime_msec += timer.time_msec();
+
+	//}
+	//
+	//averageTime_sec = averageTime_sec / 5.0;
+	//averageTime_msec = averageTime_msec / 5.0;
+
+	//cout << "Average Sort Time: " << endl;
+	//cout << "Sec: " << averageTime_sec << endl;;
+	//cout << "miliSec: " << averageTime_msec << endl;
+	//cout << endl;
+
+	//// Binary Search Tests
+	//averageTime_sec = 0.0;
+	//averageTime_msec = 0.0;
+
+	//for (size_t i = 0; i < 5; ++i) {
+	//	timer.start();
+	//	std::binary_search(rVector.begin(), rVector.end(), rNum[0]);
+	//	timer.stop();
+
+	//	averageTime_sec += timer.time_sec();
+	//	averageTime_msec += timer.time_msec();
+
+	//}
+
+	//averageTime_sec = averageTime_sec / 5.0;
+	//averageTime_msec = averageTime_msec / 5.0;
+
+	//cout << "Average Binary Search Time: " << endl;
+	//cout << "Sec: " << averageTime_sec << endl;;
+	//cout << "miliSec: " << averageTime_msec << endl;
+	//cout << endl;
+
+	//// Reverse Algorithm Tests
+	//averageTime_sec = 0.0;
+	//averageTime_msec = 0.0;
+
+	//std::vector<int> copy_rVector;
+
+	//for (size_t i = 0; i < 5; ++i) {
+	//	copy_rVector = rVector;
+	//	timer.start();
+	//	std::reverse(rVector.begin(), rVector.end());
+	//	timer.stop();
+
+	//	averageTime_sec += timer.time_sec();
+	//	averageTime_msec += timer.time_msec();
+
+	//}
+
+	//averageTime_sec = averageTime_sec / 5.0;
+	//averageTime_msec = averageTime_msec / 5.0;
+
+	//cout << "Average Reverse Time: " << endl;
+	//cout << "Sec: " << averageTime_sec << endl;;
+	//cout << "miliSec: " << averageTime_msec << endl;
+	//cout << endl <<"----------------------------------------" << endl;
+
+}
+
+
+
+int main() {
+	//std::vector<string> vectorBook;
+	//Stopwatch vectorTime;
+	//double vector_msec_average = 0;
+
+	//for (size_t i = 0; i < 5; i++){
+	//	vectorBook.clear();
+	//	vectorTime.start();
+	//	readFile_vector("Anthem.txt", vectorBook);
+	//	vectorTime.stop();
+	//	vector_msec_average += vectorTime.time_msec();
+	//}
+
+	//cout << "Vector msec:" << vector_msec_average / 5.0 << endl;;
+
+	//testVector("Anthem.txt", vectorBook);
+
+	testVector("Anthem.txt");
+
+
 	std::list<string> listBook;
 	Stopwatch listTime;
 	double list_msec_average = 0;
@@ -244,9 +266,6 @@ int main() {
 
 	cout << "Set msec:" << set_msec_average / 5.0 << endl;;
 
-	//for (size_t i = 0; i < test.size(); i++) {
-	//	cout << test[i] << endl;
-	//}
 
 	return 0;
 }
