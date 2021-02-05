@@ -8,6 +8,7 @@ using std::endl;
 #include <string>
 using std::string;
 #include <fstream>
+#include <sstream> //istreamstring used for words
 
 
 //uses mt19937 to generate a randnom in a given range
@@ -141,14 +142,20 @@ void testVector(int size) {
 
 void readFile(string filename, std::vector<string>& book) {
 	std::ifstream open(filename);
+	string word;
 	if (!open) { // quick error check
 		cout << "Error Can't Load Data!" << std::endl;
 	}
 	else {
 		while (!open.eof()) {
-			string input;
-			std::getline(open, input);
-			book.push_back(input);
+			string data;
+			std::getline(open, data);
+			std::istringstream iss(data);
+			
+			while (iss >> word)
+			{
+				book.push_back(word);
+			}
 		}
 	}
 }
