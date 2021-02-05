@@ -5,6 +5,10 @@ using std::endl;
 #include <random> //mt19937
 #include <vector>
 #include "StopWatch.h"
+#include <string>
+using std::string;
+#include <fstream>
+
 
 //uses mt19937 to generate a randnom in a given range
 int randomNum(int min, int max) {
