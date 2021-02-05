@@ -15,7 +15,6 @@ using std::string;
 
 
 
-//uses mt19937 to generate a randnom in a given range
 int randomNum(int min, int max) {
 	std::random_device rDevice;
 	std::mt19937 generator(rDevice());
@@ -24,7 +23,7 @@ int randomNum(int min, int max) {
 	return distribution(generator);
 }
 
-// makes random vector of a given size
+//Not Used
 void randomVect(std::vector<int>& rVector, int vectSize, int vectMin, int vectMax) {
 	rVector.clear(); // clears out vector
 	// Pushes random Values into vector.
@@ -33,7 +32,6 @@ void randomVect(std::vector<int>& rVector, int vectSize, int vectMin, int vectMa
 	}
 }
 
-// reads ever word from text file and pushes back to a vector
 void readFile_vector(string filename, std::vector<string>& book) {
 	std::ifstream open(filename);
 	string word;
@@ -91,7 +89,6 @@ void readFile_set(string filename, std::set<string>& book) {
 	}
 }
 
-// Time tests for vectors based on given size
 void testVector(string name) {
 	double averageTime_sec = 0; // used for average time sec
 	double averageTime_msec = 0; // used for average time sec
@@ -192,7 +189,7 @@ void testVector(string name) {
 	averageTime_sec = averageTime_sec / 5.0;
 	averageTime_msec = averageTime_msec / 5.0;
 
-	cout << "average binary search time: " << endl;
+	cout << "Average binary search time: " << endl;
 	cout << "sec: " << averageTime_sec << endl;;
 	cout << "milisec: " << averageTime_msec << endl;
 	cout << endl;
@@ -224,7 +221,6 @@ void testVector(string name) {
 
 }
 
-// Time tests for list based on given size
 void testList(string name) {
 	double averageTime_sec = 0; // used for average time sec
 	double averageTime_msec = 0; // used for average time sec
@@ -299,7 +295,7 @@ void testList(string name) {
 	averageTime_sec = averageTime_sec / 5.0;
 	averageTime_msec = averageTime_msec / 5.0;
 
-	cout << "average sort time: " << endl;
+	cout << "Average sort time: " << endl;
 	cout << "sec: " << averageTime_sec << endl;;
 	cout << "milisec: " << averageTime_msec << endl;
 	cout << endl;
@@ -328,7 +324,7 @@ void testList(string name) {
 	averageTime_sec = averageTime_sec / 5.0;
 	averageTime_msec = averageTime_msec / 5.0;
 
-	cout << "average binary search time: " << endl;
+	cout << "Average binary search time: " << endl;
 	cout << "sec: " << averageTime_sec << endl;;
 	cout << "milisec: " << averageTime_msec << endl;
 	cout << endl;
@@ -360,7 +356,6 @@ void testList(string name) {
 
 }
 
-// Time tests for vectors based on given size
 void testSet(string name) {
 	double averageTime_sec = 0; // used for average time sec
 	double averageTime_msec = 0; // used for average time sec
@@ -384,7 +379,7 @@ void testSet(string name) {
 	averageTime_sec = averageTime_sec / 5.0;
 	averageTime_msec = averageTime_msec / 5.0;
 
-	cout << "Average Vector Read Time: " << endl;
+	cout << "Average Set Read Time: " << endl;
 	cout << "Sec: " << averageTime_sec << endl;;
 	cout << "miliSec: " << averageTime_msec << endl;
 	cout << endl;
@@ -393,8 +388,6 @@ void testSet(string name) {
 
 	// Search tests
 	for (size_t i = 0; i < 5; ++i) {
-		//rWord.push_back(book[randomNum(0, book.size())]); // random value to search
-
 		auto book_front = book.begin();
 		std::advance(book_front, randomNum(0, book.size()));
 		rWord.insert(*book_front);
@@ -469,7 +462,7 @@ void testSet(string name) {
 	averageTime_sec = averageTime_sec / 5.0;
 	averageTime_msec = averageTime_msec / 5.0;
 
-	cout << "average binary search time: " << endl;
+	cout << "Average binary search time: " << endl;
 	cout << "sec: " << averageTime_sec << endl;;
 	cout << "milisec: " << averageTime_msec << endl;
 	cout << endl;

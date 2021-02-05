@@ -22,7 +22,18 @@ int main() {
 	testVector("Anthem.txt");
 	testList("Anthem.txt");
 	testSet("Anthem.txt");
-
+	testVector("Alice.txt");
+	testList("Alice.txt");
+	testSet("Alice.txt");
+	testVector("frankenstein.txt");
+	testList("frankenstein.txt");
+	testSet("frankenstein.txt");
+	testVector("Metamorphosis.txt");
+	testList("Metamorphosis.txt");
+	testSet("Metamorphosis.txt");
+	testVector("The Yellow Wallpaper.txt");
+	testList("The Yellow Wallpaper.txt");
+	testSet("The Yellow Wallpaper.txt");
 
 	return 0;
 }
