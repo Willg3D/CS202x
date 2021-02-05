@@ -139,7 +139,7 @@ void testVector(int size) {
 
 }
 
-void readFile(std::string filename) {
+void readFile(string filename, std::vector<string>& book) {
 	std::ifstream open(filename);
 	if (!open) { // quick error check
 		cout << "Error Can't Load Data!" << std::endl;
@@ -148,15 +148,19 @@ void readFile(std::string filename) {
 		while (!open.eof()) {
 			string input;
 			std::getline(open, input);
-			cout << input << std::endl;
+			book.push_back(input);
 		}
 	}
 }
 
 int main() {
-
-	// code to test Search, Sort, Binary Search, and Reverse Algorithms
-	// based on provided size.
+	std::vector<string> test;
+	readFile("test.txt", test);
+	for (size_t i = 0; i < test.size(); i++)
+	{
+		cout << test[i] << endl;
+	}
+	
 
 	return 0;
 }
