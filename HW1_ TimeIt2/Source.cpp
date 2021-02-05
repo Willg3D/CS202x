@@ -5,6 +5,7 @@ using std::endl;
 #include <random> //mt19937
 #include <vector>
 #include <list>
+#include <set>
 #include "StopWatch.h"
 #include <string>
 using std::string;
@@ -180,15 +181,34 @@ void readFile_list(string filename, std::list<string>& book) {
 	}
 }
 
+void readFile_set(string filename, std::set<string>& book) {
+	std::ifstream open(filename);
+	string word;
+	if (!open) { // quick error check
+		cout << "Error Can't Load Data!" << std::endl;
+	}
+	else {
+		while (!open.eof()) {
+			string data;
+			std::getline(open, data);
+			std::istringstream iss(data);
+
+			while (iss >> word) {
+				book.insert(word);
+			}
+		}
+	}
+}
+
 int main() {
-	std::vector<string> test;
+	std::vector<string> vectorBook;
 	Stopwatch vectorTime;
 	double vector_msec_average = 0;
 
 	for (size_t i = 0; i < 5; i++){
-		test.clear();
+		vectorBook.clear();
 		vectorTime.start();
-		readFile_vector("Anthem.txt", test);
+		readFile_vector("Anthem.txt", vectorBook);
 		vectorTime.stop();
 		vector_msec_average += vectorTime.time_msec();
 	}
@@ -196,19 +216,33 @@ int main() {
 	cout << "Vector msec:" << vector_msec_average / 5.0 << endl;;
 
 	
-	std::list<string> test2;
+	std::list<string> listBook;
 	Stopwatch listTime;
 	double list_msec_average = 0;
 
 	for (size_t i = 0; i < 5; i++) {
-		test2.clear();
+		listBook.clear();
 		listTime.start();
-		readFile_list("Anthem.txt", test2);
+		readFile_list("Anthem.txt", listBook);
 		listTime.stop();
 		list_msec_average += listTime.time_msec();
 	}
 
 	cout << "List msec:" << list_msec_average / 5.0 << endl;;
+
+	std::set<string> setBook;
+	Stopwatch setTime;
+	double set_msec_average = 0;
+
+	for (size_t i = 0; i < 5; i++) {
+		setBook.clear();
+		setTime.start();
+		readFile_set("Anthem.txt", setBook);
+		setTime.stop();
+		set_msec_average += setTime.time_msec();
+	}
+
+	cout << "Set msec:" << set_msec_average / 5.0 << endl;;
 
 	//for (size_t i = 0; i < test.size(); i++) {
 	//	cout << test[i] << endl;
