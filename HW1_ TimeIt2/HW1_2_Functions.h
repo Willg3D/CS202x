@@ -32,4 +32,7 @@ void readFile_set(string filename, std::set<string>& book);
 // Time tests for vectors based on given size
 void testVector(string name);
 
+// Time tests for list based on given size
+void testList(string name);
+
 #endif

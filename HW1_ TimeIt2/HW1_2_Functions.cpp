@@ -223,3 +223,137 @@ void testVector(string name) {
 	cout << endl << "----------------------------------------" << endl;
 
 }
+
+// Time tests for vectors based on given size
+void testList(string name) {
+	double averageTime_sec = 0; // used for average time sec
+	double averageTime_msec = 0; // used for average time sec
+
+	std::list<string> rWord;// random word vector to use search
+
+	cout << "Running " << name << " Book Tests" << endl << endl;
+	std::list<string> book;
+
+	Stopwatch timer; // timer using Stopwatch class
+
+	for (size_t i = 0; i < 5; i++) {
+		book.clear();
+		timer.start();
+		readFile_list(name, book);
+		timer.stop();
+		averageTime_sec += timer.time_sec();
+		averageTime_msec += timer.time_msec();
+	}
+
+	averageTime_sec = averageTime_sec / 5.0;
+	averageTime_msec = averageTime_msec / 5.0;
+
+	cout << "Average List Read Time: " << endl;
+	cout << "Sec: " << averageTime_sec << endl;;
+	cout << "miliSec: " << averageTime_msec << endl;
+	cout << endl;
+
+	// Search tests
+	for (size_t i = 0; i < 5; ++i) {
+		auto book_front = book.begin();
+		std::advance(book_front, randomNum(0, book.size()));
+		rWord.push_back(*book_front);
+		//rWord.push_back(book[randomNum(0, book.size())]); // random value to search
+
+		timer.start();
+		std::search(book.begin(), book.end(), rWord.begin(), rWord.end());
+		timer.stop();
+
+		rWord.clear();
+
+		averageTime_sec += timer.time_sec();
+		averageTime_msec += timer.time_msec();
+
+	}
+
+	// averaging time
+	averageTime_sec = averageTime_sec / 5.0;
+	averageTime_msec = averageTime_msec / 5.0;
+
+	cout << "Average Search Time: " << endl;
+	cout << "Sec: " << averageTime_sec << endl;;
+	cout << "miliSec: " << averageTime_msec << endl;
+	cout << endl;
+
+	//// Sorting Tests
+	//averageTime_sec = 0.0; // needed to reset vaules for averaging
+	//averageTime_msec = 0.0;
+
+	//std::vector<string> sorted_book; // vector that will be sorted
+
+	//for (size_t i = 0; i < 5; ++i) {
+	//	sorted_book = book;
+	//	timer.start();
+	//	std::sort(sorted_book.begin(), sorted_book.end());
+	//	timer.stop();
+
+	//	averageTime_sec += timer.time_sec();
+	//	averageTime_msec += timer.time_msec();
+
+	//}
+
+	//averageTime_sec = averageTime_sec / 5.0;
+	//averageTime_msec = averageTime_msec / 5.0;
+
+	//cout << "Average Sort Time: " << endl;
+	//cout << "Sec: " << averageTime_sec << endl;;
+	//cout << "miliSec: " << averageTime_msec << endl;
+	//cout << endl;
+
+	//// binary search tests
+	//averageTime_sec = 0.0;
+	//averageTime_msec = 0.0;
+
+	//for (size_t i = 0; i < 5; ++i) {
+	//	rWord.push_back(book[randomNum(0, book.size())]); // random value to search
+
+	//	timer.start();
+	//	std::binary_search(sorted_book.begin(), sorted_book.end(), rWord[0]);
+	//	timer.stop();
+
+	//	rWord.clear();
+
+	//	averageTime_sec += timer.time_sec();
+	//	averageTime_msec += timer.time_msec();
+
+	//}
+
+	//averageTime_sec = averageTime_sec / 5.0;
+	//averageTime_msec = averageTime_msec / 5.0;
+
+	//cout << "average binary search time: " << endl;
+	//cout << "sec: " << averageTime_sec << endl;;
+	//cout << "milisec: " << averageTime_msec << endl;
+	//cout << endl;
+
+	//// Reverse Algorithm Tests
+	//averageTime_sec = 0.0;
+	//averageTime_msec = 0.0;
+
+	//std::vector<string> copy_book;
+
+	//for (size_t i = 0; i < 5; ++i) {
+	//	copy_book = book;
+	//	timer.start();
+	//	std::reverse(copy_book.begin(), copy_book.end());
+	//	timer.stop();
+
+	//	averageTime_sec += timer.time_sec();
+	//	averageTime_msec += timer.time_msec();
+
+	//}
+
+	//averageTime_sec = averageTime_sec / 5.0;
+	//averageTime_msec = averageTime_msec / 5.0;
+
+	//cout << "Average Reverse Time: " << endl;
+	//cout << "Sec: " << averageTime_sec << endl;;
+	//cout << "miliSec: " << averageTime_msec << endl;
+	//cout << endl << "----------------------------------------" << endl;
+
+}

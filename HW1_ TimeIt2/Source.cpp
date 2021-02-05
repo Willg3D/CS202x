@@ -34,35 +34,35 @@ int main() {
 	//testVector("Anthem.txt", vectorBook);
 
 	testVector("Anthem.txt");
+	testList("Anthem.txt");
 
+	//std::list<string> listBook;
+	//Stopwatch listTime;
+	//double list_msec_average = 0;
 
-	std::list<string> listBook;
-	Stopwatch listTime;
-	double list_msec_average = 0;
+	//for (size_t i = 0; i < 5; i++) {
+	//	listBook.clear();
+	//	listTime.start();
+	//	readFile_list("Anthem.txt", listBook);
+	//	listTime.stop();
+	//	list_msec_average += listTime.time_msec();
+	//}
 
-	for (size_t i = 0; i < 5; i++) {
-		listBook.clear();
-		listTime.start();
-		readFile_list("Anthem.txt", listBook);
-		listTime.stop();
-		list_msec_average += listTime.time_msec();
-	}
+	//cout << "List msec:" << list_msec_average / 5.0 << endl;;
 
-	cout << "List msec:" << list_msec_average / 5.0 << endl;;
+	//std::set<string> setBook;
+	//Stopwatch setTime;
+	//double set_msec_average = 0;
 
-	std::set<string> setBook;
-	Stopwatch setTime;
-	double set_msec_average = 0;
+	//for (size_t i = 0; i < 5; i++) {
+	//	setBook.clear();
+	//	setTime.start();
+	//	readFile_set("Anthem.txt", setBook);
+	//	setTime.stop();
+	//	set_msec_average += setTime.time_msec();
+	//}
 
-	for (size_t i = 0; i < 5; i++) {
-		setBook.clear();
-		setTime.start();
-		readFile_set("Anthem.txt", setBook);
-		setTime.stop();
-		set_msec_average += setTime.time_msec();
-	}
-
-	cout << "Set msec:" << set_msec_average / 5.0 << endl;;
+	//cout << "Set msec:" << set_msec_average / 5.0 << endl;;
 
 
 	return 0;
