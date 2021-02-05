@@ -169,27 +169,31 @@ void testVector(string name) {
 	cout << "miliSec: " << averageTime_msec << endl;
 	cout << endl;
 
-	//// binary search tests
-	//averagetime_sec = 0.0;
-	//averagetime_msec = 0.0;
+	// binary search tests
+	averageTime_sec = 0.0;
+	averageTime_msec = 0.0;
 
-	//for (size_t i = 0; i < 5; ++i) {
-	//	timer.start();
-	//	std::binary_search(rvector.begin(), rvector.end(), rnum[0]);
-	//	timer.stop();
+	for (size_t i = 0; i < 5; ++i) {
+		rWord.push_back(book[randomNum(0, book.size())]); // random value to search
 
-	//	averagetime_sec += timer.time_sec();
-	//	averagetime_msec += timer.time_msec();
+		timer.start();
+		std::binary_search(sorted_book.begin(), sorted_book.end(), rWord[0]);
+		timer.stop();
 
-	//}
+		rWord.clear();
 
-	//averagetime_sec = averagetime_sec / 5.0;
-	//averagetime_msec = averagetime_msec / 5.0;
+		averageTime_sec += timer.time_sec();
+		averageTime_msec += timer.time_msec();
 
-	//cout << "average binary search time: " << endl;
-	//cout << "sec: " << averagetime_sec << endl;;
-	//cout << "milisec: " << averagetime_msec << endl;
-	//cout << endl;
+	}
+
+	averageTime_sec = averageTime_sec / 5.0;
+	averageTime_msec = averageTime_msec / 5.0;
+
+	cout << "average binary search time: " << endl;
+	cout << "sec: " << averageTime_sec << endl;;
+	cout << "milisec: " << averageTime_msec << endl;
+	cout << endl;
 
 	//// Reverse Algorithm Tests
 	//averageTime_sec = 0.0;
