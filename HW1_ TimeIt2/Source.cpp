@@ -195,30 +195,30 @@ void testVector(string name) {
 	cout << "milisec: " << averageTime_msec << endl;
 	cout << endl;
 
-	//// Reverse Algorithm Tests
-	//averageTime_sec = 0.0;
-	//averageTime_msec = 0.0;
+	// Reverse Algorithm Tests
+	averageTime_sec = 0.0;
+	averageTime_msec = 0.0;
 
-	//std::vector<int> copy_rVector;
+	std::vector<string> copy_book;
 
-	//for (size_t i = 0; i < 5; ++i) {
-	//	copy_rVector = rVector;
-	//	timer.start();
-	//	std::reverse(rVector.begin(), rVector.end());
-	//	timer.stop();
+	for (size_t i = 0; i < 5; ++i) {
+		copy_book = book;
+		timer.start();
+		std::reverse(copy_book.begin(), copy_book.end());
+		timer.stop();
 
-	//	averageTime_sec += timer.time_sec();
-	//	averageTime_msec += timer.time_msec();
+		averageTime_sec += timer.time_sec();
+		averageTime_msec += timer.time_msec();
 
-	//}
+	}
 
-	//averageTime_sec = averageTime_sec / 5.0;
-	//averageTime_msec = averageTime_msec / 5.0;
+	averageTime_sec = averageTime_sec / 5.0;
+	averageTime_msec = averageTime_msec / 5.0;
 
-	//cout << "Average Reverse Time: " << endl;
-	//cout << "Sec: " << averageTime_sec << endl;;
-	//cout << "miliSec: " << averageTime_msec << endl;
-	//cout << endl <<"----------------------------------------" << endl;
+	cout << "Average Reverse Time: " << endl;
+	cout << "Sec: " << averageTime_sec << endl;;
+	cout << "miliSec: " << averageTime_msec << endl;
+	cout << endl <<"----------------------------------------" << endl;
 
 }
 
