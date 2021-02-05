@@ -4,6 +4,7 @@ using std::endl;
 #include <algorithm>
 #include <random> //mt19937
 #include <vector>
+#include <list>
 #include "StopWatch.h"
 #include <string>
 using std::string;
@@ -140,7 +141,8 @@ void testVector(int size) {
 
 }
 
-void readFile(string filename, std::vector<string>& book) {
+// reads ever word from text file and pushes back to a vector
+void readFile_vector(string filename, std::vector<string>& book) {
 	std::ifstream open(filename);
 	string word;
 	if (!open) { // quick error check
@@ -152,8 +154,26 @@ void readFile(string filename, std::vector<string>& book) {
 			std::getline(open, data);
 			std::istringstream iss(data);
 			
-			while (iss >> word)
-			{
+			while (iss >> word){
+				book.push_back(word);
+			}
+		}
+	}
+}
+
+void readFile_list(string filename, std::list<string>& book) {
+	std::ifstream open(filename);
+	string word;
+	if (!open) { // quick error check
+		cout << "Error Can't Load Data!" << std::endl;
+	}
+	else {
+		while (!open.eof()) {
+			string data;
+			std::getline(open, data);
+			std::istringstream iss(data);
+
+			while (iss >> word) {
 				book.push_back(word);
 			}
 		}
@@ -162,12 +182,22 @@ void readFile(string filename, std::vector<string>& book) {
 
 int main() {
 	std::vector<string> test;
-	readFile("test.txt", test);
-	for (size_t i = 0; i < test.size(); i++)
-	{
-		cout << test[i] << endl;
-	}
+	Stopwatch vectorTime;
+	readFile_vector("Anthem.txt", test);
+	//for (size_t i = 0; i < test.size(); i++){
+	//	cout << test[i] << endl;
+	//}
+	vectorTime.stop();
+	cout << vectorTime.time_msec();
 	
+	std::list<string> test2;
+	Stopwatch listTime;
+	readFile_list("Anthem.txt", test2);
+	listTime.stop();
+	cout << "\n" << listTime.time_msec();
+	//for (size_t i = 0; i < test.size(); i++) {
+	//	cout << test[i] << endl;
+	//}
 
 	return 0;
 }
