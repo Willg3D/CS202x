@@ -128,6 +128,8 @@ void testVector(string name) {
 		std::search(book.begin(), book.end(), rWord.begin(), rWord.end());
 		timer.stop();
 
+		rWord.clear();
+
 		averageTime_sec += timer.time_sec();
 		averageTime_msec += timer.time_msec();
 
@@ -142,51 +144,51 @@ void testVector(string name) {
 	cout << "miliSec: " << averageTime_msec << endl;
 	cout << endl;
 
-	//// Sorting Tests
-	//averageTime_sec = 0.0; // needed to reset vaules for averaging
-	//averageTime_msec = 0.0;
+	// Sorting Tests
+	averageTime_sec = 0.0; // needed to reset vaules for averaging
+	averageTime_msec = 0.0;
 
-	//std::vector<int> sorted_rVector; // vector that will be sorted
+	std::vector<string> sorted_book; // vector that will be sorted
+
+	for (size_t i = 0; i < 5; ++i) {
+		sorted_book = book;
+		timer.start();
+		std::sort(sorted_book.begin(), sorted_book.end());
+		timer.stop();
+
+		averageTime_sec += timer.time_sec();
+		averageTime_msec += timer.time_msec();
+
+	}
+	
+	averageTime_sec = averageTime_sec / 5.0;
+	averageTime_msec = averageTime_msec / 5.0;
+
+	cout << "Average Sort Time: " << endl;
+	cout << "Sec: " << averageTime_sec << endl;;
+	cout << "miliSec: " << averageTime_msec << endl;
+	cout << endl;
+
+	//// binary search tests
+	//averagetime_sec = 0.0;
+	//averagetime_msec = 0.0;
 
 	//for (size_t i = 0; i < 5; ++i) {
-	//	sorted_rVector = rVector;
 	//	timer.start();
-	//	std::sort(rVector.begin(), rVector.end());
+	//	std::binary_search(rvector.begin(), rvector.end(), rnum[0]);
 	//	timer.stop();
 
-	//	averageTime_sec += timer.time_sec();
-	//	averageTime_msec += timer.time_msec();
-
-	//}
-	//
-	//averageTime_sec = averageTime_sec / 5.0;
-	//averageTime_msec = averageTime_msec / 5.0;
-
-	//cout << "Average Sort Time: " << endl;
-	//cout << "Sec: " << averageTime_sec << endl;;
-	//cout << "miliSec: " << averageTime_msec << endl;
-	//cout << endl;
-
-	//// Binary Search Tests
-	//averageTime_sec = 0.0;
-	//averageTime_msec = 0.0;
-
-	//for (size_t i = 0; i < 5; ++i) {
-	//	timer.start();
-	//	std::binary_search(rVector.begin(), rVector.end(), rNum[0]);
-	//	timer.stop();
-
-	//	averageTime_sec += timer.time_sec();
-	//	averageTime_msec += timer.time_msec();
+	//	averagetime_sec += timer.time_sec();
+	//	averagetime_msec += timer.time_msec();
 
 	//}
 
-	//averageTime_sec = averageTime_sec / 5.0;
-	//averageTime_msec = averageTime_msec / 5.0;
+	//averagetime_sec = averagetime_sec / 5.0;
+	//averagetime_msec = averagetime_msec / 5.0;
 
-	//cout << "Average Binary Search Time: " << endl;
-	//cout << "Sec: " << averageTime_sec << endl;;
-	//cout << "miliSec: " << averageTime_msec << endl;
+	//cout << "average binary search time: " << endl;
+	//cout << "sec: " << averagetime_sec << endl;;
+	//cout << "milisec: " << averagetime_msec << endl;
 	//cout << endl;
 
 	//// Reverse Algorithm Tests
