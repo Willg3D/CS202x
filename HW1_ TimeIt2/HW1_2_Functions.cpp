@@ -258,7 +258,6 @@ void testList(string name) {
 		auto book_front = book.begin();
 		std::advance(book_front, randomNum(0, book.size()));
 		rWord.push_back(*book_front);
-		//rWord.push_back(book[randomNum(0, book.size())]); // random value to search
 
 		timer.start();
 		std::search(book.begin(), book.end(), rWord.begin(), rWord.end());
@@ -280,80 +279,83 @@ void testList(string name) {
 	cout << "miliSec: " << averageTime_msec << endl;
 	cout << endl;
 
-	//// Sorting Tests
-	//averageTime_sec = 0.0; // needed to reset vaules for averaging
-	//averageTime_msec = 0.0;
+	// sorting tests
+	averageTime_sec = 0.0; // needed to reset vaules for averaging
+	averageTime_msec = 0.0;
 
-	//std::vector<string> sorted_book; // vector that will be sorted
+	std::list<string> sorted_book; // vector that will be sorted
 
-	//for (size_t i = 0; i < 5; ++i) {
-	//	sorted_book = book;
-	//	timer.start();
-	//	std::sort(sorted_book.begin(), sorted_book.end());
-	//	timer.stop();
+	for (size_t i = 0; i < 5; ++i) {
+		sorted_book = book;
+		timer.start();
+		sorted_book.sort(); // using sort function that comes with list
+		timer.stop();
 
-	//	averageTime_sec += timer.time_sec();
-	//	averageTime_msec += timer.time_msec();
+		averageTime_sec += timer.time_sec();
+		averageTime_msec += timer.time_msec();
 
-	//}
+	}
 
-	//averageTime_sec = averageTime_sec / 5.0;
-	//averageTime_msec = averageTime_msec / 5.0;
+	averageTime_sec = averageTime_sec / 5.0;
+	averageTime_msec = averageTime_msec / 5.0;
 
-	//cout << "Average Sort Time: " << endl;
-	//cout << "Sec: " << averageTime_sec << endl;;
-	//cout << "miliSec: " << averageTime_msec << endl;
-	//cout << endl;
+	cout << "average sort time: " << endl;
+	cout << "sec: " << averageTime_sec << endl;;
+	cout << "milisec: " << averageTime_msec << endl;
+	cout << endl;
 
-	//// binary search tests
-	//averageTime_sec = 0.0;
-	//averageTime_msec = 0.0;
+	// binary search tests
+	averageTime_sec = 0.0;
+	averageTime_msec = 0.0;
 
-	//for (size_t i = 0; i < 5; ++i) {
-	//	rWord.push_back(book[randomNum(0, book.size())]); // random value to search
+	for (size_t i = 0; i < 5; ++i) {
+		auto book_front = book.begin();
+		std::advance(book_front, randomNum(0, book.size()));
+		//rWord.push_back(*book_front);
+		string temp = *book_front;
 
-	//	timer.start();
-	//	std::binary_search(sorted_book.begin(), sorted_book.end(), rWord[0]);
-	//	timer.stop();
+		timer.start();
+		std::binary_search(sorted_book.begin(), sorted_book.end(), temp);
+		timer.stop();
 
-	//	rWord.clear();
+		rWord.clear();
 
-	//	averageTime_sec += timer.time_sec();
-	//	averageTime_msec += timer.time_msec();
+		averageTime_sec += timer.time_sec();
+		averageTime_msec += timer.time_msec();
 
-	//}
+	}
 
-	//averageTime_sec = averageTime_sec / 5.0;
-	//averageTime_msec = averageTime_msec / 5.0;
+	averageTime_sec = averageTime_sec / 5.0;
+	averageTime_msec = averageTime_msec / 5.0;
 
-	//cout << "average binary search time: " << endl;
-	//cout << "sec: " << averageTime_sec << endl;;
-	//cout << "milisec: " << averageTime_msec << endl;
-	//cout << endl;
+	cout << "average binary search time: " << endl;
+	cout << "sec: " << averageTime_sec << endl;;
+	cout << "milisec: " << averageTime_msec << endl;
+	cout << endl;
 
-	//// Reverse Algorithm Tests
-	//averageTime_sec = 0.0;
-	//averageTime_msec = 0.0;
+	// Reverse Algorithm Tests
+	averageTime_sec = 0.0;
+	averageTime_msec = 0.0;
 
-	//std::vector<string> copy_book;
+	std::list<string> copy_book;
 
-	//for (size_t i = 0; i < 5; ++i) {
-	//	copy_book = book;
-	//	timer.start();
-	//	std::reverse(copy_book.begin(), copy_book.end());
-	//	timer.stop();
+	for (size_t i = 0; i < 5; ++i) {
+		copy_book = book;
+		timer.start();
+		std::reverse(copy_book.begin(), copy_book.end());
+		timer.stop();
 
-	//	averageTime_sec += timer.time_sec();
-	//	averageTime_msec += timer.time_msec();
+		averageTime_sec += timer.time_sec();
+		averageTime_msec += timer.time_msec();
 
-	//}
+	}
 
-	//averageTime_sec = averageTime_sec / 5.0;
-	//averageTime_msec = averageTime_msec / 5.0;
+	averageTime_sec = averageTime_sec / 5.0;
+	averageTime_msec = averageTime_msec / 5.0;
 
-	//cout << "Average Reverse Time: " << endl;
-	//cout << "Sec: " << averageTime_sec << endl;;
-	//cout << "miliSec: " << averageTime_msec << endl;
-	//cout << endl << "----------------------------------------" << endl;
+	cout << "Average Reverse Time: " << endl;
+	cout << "Sec: " << averageTime_sec << endl;;
+	cout << "miliSec: " << averageTime_msec << endl;
+	cout << endl << "----------------------------------------" << endl;
 
 }
