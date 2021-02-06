@@ -18,7 +18,7 @@ using std::string;
 int randomNum(int min, int max);
 
 // makes random vector of a given size
-void randomVect(std::vector<int>& rVector, int vectSize, int vectMin, int vectMax);
+void randomVect(std::vector<int>& rVector, int vectSize, int vectMin, int vectMax); //not used
 
 // reads ever word from text file and pushes back to a vector
 void readFile_vector(string filename, std::vector<string>& book);
@@ -30,13 +30,13 @@ void readFile_list(string filename, std::list<string>& book);
 void readFile_set(string filename, std::set<string>& book);
 
 // Time tests for vectors based on given size
-void testVector(string name);
+void testVector(string name); // uses in readFile_vector and randomNum
 
 // Time tests for list based on given size
-void testList(string name);
+void testList(string name); // uses in readFile_list and randomNum
 
 // Time tests for set based on given size
-void testSet(string name);
+void testSet(string name); // uses in readFile_set and randomNum
 
 
 #endif

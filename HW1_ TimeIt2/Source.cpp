@@ -1,24 +1,24 @@
-#include <iostream>
-using std::cout;
-using std::endl;
-#include <algorithm>
-#include <random> //mt19937
-#include <vector>
-#include <list>
-#include <set>
-#include "StopWatch.h"
+//#include <iostream>
+//using std::cout;
+//using std::endl;
+//#include <algorithm>
+//#include <random> //mt19937
+//#include <vector>
+//#include <list>
+//#include <set>
+//#include "StopWatch.h"
 #include "HW1_2_Functions.h"
-#include <string>
-using std::string;
-#include <fstream>
-#include <sstream> //istreamstring used for words
+//#include <string>
+//using std::string;
+//#include <fstream>
+//#include <sstream> //istreamstring used for words
 
 
 
 
 int main() {
-
-
+	// All needed used functions mentioned in header
+	// Test for each book (text file)
 	testVector("Anthem.txt");
 	testList("Anthem.txt");
 	testSet("Anthem.txt");
