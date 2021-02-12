@@ -33,17 +33,21 @@ void enterMonValue(Monster& name, int id, char type, int hp, int sta, int att, i
 
 // Queue
 TEST_CASE("Push and Pop Test Queue", "[Queue]") {
-	std::list<Monster> test1;
-	Monster v1,v2,v3,v4;
+	std::list<Monster> test;
+	Monster v1,v2,v3,temp;
 	enterMonValue(v1, 1, 'W', 1, 1, 1, 1);
 	enterMonValue(v2, 2, 'W', 2, 2, 2, 2);
 	enterMonValue(v3, 3, 'W', 3, 3, 3, 3);
-	test1.push_back(v1);
-	test1.push_back(v2);
-	test1.push_back(v3);
-	REQUIRE(v1 == test1.front()); //check if v1 in front
-	REQUIRE(v3 == test1.back()); //check if v3 in back
-
+	test.push_back(v1);
+	test.push_back(v2);
+	test.push_back(v3);
+	REQUIRE(v1 == test.front()); //check if v1 in front
+	REQUIRE(v3 == test.back()); //check if v3 in back
+	
+	test.pop_front();
+	REQUIRE(v2 == test.front()); //check if v2 in front after pop
+	test.pop_front();
+	REQUIRE(v3 == test.front()); //check if v3 in front after pop
 
 }
 // Stack
