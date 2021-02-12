@@ -15,8 +15,8 @@ int main() {
 	for (size_t i = 0; text[i] != '0'; i++) {
 		if (text[i] >= 65 && text[i] <= 90) {
 			// If check asscii values for upper case
-			// appears program will terminate.
-			terminate();
+			// appears program will crash.
+			throw 1; // causes crash
 		}
 	}
 	return 0;
