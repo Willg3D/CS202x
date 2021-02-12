@@ -12,12 +12,13 @@ int main() {
 	char text[] = "Hello, World!0";
 	to_lower(text);
 
-	//check with out using iostream header
+	// a check without using iostream header
 	for (size_t i = 0; text[i] != '0'; i++) {
 		if (text[i] >= 65 && text[i] <= 90) {
-			// If check ascii values for upper case
-			// appears program will crash.
-			throw 1; // causes crash
+			// If check sees ascii values for upper case
+			// letters appear then the program will crash.
+
+			throw 1; // causes crash on purpose
 			//return 1; // could return 1 as an indicator if crashing is bad
 		}
 	}
