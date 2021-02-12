@@ -1,5 +1,7 @@
 #include <iostream>
 #include <list>
+#include <string>
+#include <sstream>  // std::stringstream
 #include "catch.hpp"
 
 
@@ -108,7 +110,41 @@ TEST_CASE("Insert and Find", "") {
 
 }
 // Print the list out
-TEST_CASE("Print the list out", "") {
+void printTest(std::ostream& os = std::cout) {
 
+}
+
+TEST_CASE("Print the list out", "") {
+	std::list<Monster> test;
+	Monster v1, v2, v3, v4;
+	enterMonValue(v1, 1, 'W', 1, 1, 1, 1);
+	enterMonValue(v2, 2, 'W', 2, 2, 2, 2);
+	enterMonValue(v3, 3, 'W', 3, 3, 3, 3);
+	enterMonValue(v4, 4, 'R', 4, 4, 4, 4);
+	test.push_back(v1);
+	test.push_back(v2);
+	test.push_back(v3);
+	test.push_back(v4);
+
+	// Print each struct
+	std::cout << "Prints out Monster stuck (Value struct):\n";
+	auto position = test.begin(); // position iter of test
+	for (size_t i = 0; i < (test.size()); i++) {
+		std::cout << " ID: " << position->id;
+		std::cout << " Type: " << position->type;
+		std::cout << " Hp: " << position->hp;
+		std::cout << " Stamina: " << position->sta;
+		std::cout << " Attack: " << position->att;
+		std::cout << " Defence: " << position->def << "\n";
+		std::advance(position, 1); // advances the iter
+	}
+
+	//could figure out checking buffer
+	std::stringstream txt;
+	position--; // position of v4
+	txt << position->id;
+	std::string text = txt.str(); // converts stringstream to string
+	std::string expected = "4"; // expected id value 4
+	REQUIRE(text == expected); // verifies search position equals v2
 
 }
