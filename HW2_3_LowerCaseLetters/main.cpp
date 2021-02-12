@@ -1,4 +1,3 @@
-#include <iostream> //for testing
 
 void to_lower(char* s) {
 	for (size_t i = 0; s[i] != '0'; i++){
@@ -12,6 +11,5 @@ void to_lower(char* s) {
 int main() {
 	char text[] = "Hello World0!!";
 	to_lower(text);
-	std::cout << text;
 	return 0;
 }
