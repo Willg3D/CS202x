@@ -50,9 +50,24 @@ TEST_CASE("Push and Pop Test Queue", "[Queue]") {
 	REQUIRE(v3 == test.front()); //check if v3 in front after pop
 
 }
+
 // Stack
 TEST_CASE("Push and Pop Test Stack", "[Stack]") {
+	std::list<Monster> test;
+	Monster v1, v2, v3, temp;
+	enterMonValue(v1, 1, 'W', 1, 1, 1, 1);
+	enterMonValue(v2, 2, 'W', 2, 2, 2, 2);
+	enterMonValue(v3, 3, 'W', 3, 3, 3, 3);
+	test.push_back(v1);
+	test.push_back(v2);
+	test.push_back(v3);
+	REQUIRE(v1 == test.front()); //check if v1 in front
+	REQUIRE(v3 == test.back()); //check if v3 in back
 
+	test.pop_back();
+	REQUIRE(v2 == test.back()); //check if v2 in back after pop
+	test.pop_back();
+	REQUIRE(v1 == test.back()); //check if v3 in back after pop
 
 }
 // Insert and Find
