@@ -46,7 +46,23 @@ int main() {
 	}
 
 	// Hard coded answer based on test
-	cout << "\nOrder of Addresses from High to Low is Free Store, Stack Data, Static Data" << endl;
+	cout << "\n**Order of Addresses from High to Low is Free Store, Stack Data, Static Data**" << endl;
 
+	auto array_ptr = new int [3];
+	for (size_t i = 0; i < 3; i++)
+	{
+		array_ptr[i] = i;
+	}
+	cout << "\nint Array pointer In Free Store" << endl;
+	printPointer(array_ptr);
+	array_ptr++;
+	cout << "\nint Array pointer In Free Store Incremented" << endl;
+	printPointer(array_ptr);
+	array_ptr++;
+	cout << "\nint Array pointer In Free Store Incremented Again" << endl;
+	printPointer(array_ptr);
 
+	cout << "\n**Elements with higher index allocated at higher addresses in Free Store int Array**" << endl;
+
+	return 0;
 }
