@@ -1,3 +1,7 @@
+// William Glass
+// CS 202x
+// HW 2_1
+
 #include <iostream>
 #include <list>
 #include <string>
@@ -19,8 +23,8 @@ bool operator==(const Monster& a, const Monster& b) {
 		(a.sta == b.sta) && (a.att == b.att) && (a.def == b.def);
 }
 bool operator!=(const Monster& a, const Monster& b) {
-	return (a.id != b.id) && (a.type != b.type) && (a.hp != b.hp) &&
-		(a.sta != b.sta) && (a.att != b.att) && (a.def != b.def);
+	return (a.id != b.id) || (a.type != b.type) || (a.hp != b.hp) ||
+		(a.sta != b.sta) || (a.att != b.att) || (a.def != b.def);
 }
 
 void enterMonValue(Monster& name, int id, char type, int hp, int sta, int att, int def) {
