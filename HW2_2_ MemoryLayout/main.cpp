@@ -46,7 +46,7 @@ int main() {
 	}
 
 	// Hard coded answer based on test
-	cout << "\n**Order of Addresses from High to Low is Free Store, Stack Data, Static Data**" << endl;
+	cout << "\n**Order of Addresses from High to Low is Free Store, Static Data, Stack Data**" << endl;
 
 	auto array_ptr = new int [3];
 	for (size_t i = 0; i < 3; i++)
