@@ -1,3 +1,7 @@
+// William Glass
+// CS202x
+// HW2_2
+
 #include <iostream>
 using std::cout;
 using std::endl;
