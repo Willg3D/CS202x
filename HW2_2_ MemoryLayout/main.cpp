@@ -9,7 +9,7 @@ using std::endl;
 int staticData;
 auto staticData_ptr = &staticData;
 
-// Changed print pointer fuction
+// Changed print pointer fuction that was provided
 void printPointer(int *i) {
 	//int* iptr = &i;
 	// the unary * operator dereferences the pointer
