@@ -54,6 +54,7 @@ Box::~Box()
 }
 
 std::ostream& operator << (std::ostream& out, const Box& c) {
-	out << "Box Volume: " << c.getVolume() << std::endl;
+	out << "Width: " << c._width << ", Length: " << c._length << ", Hieght: "
+		<< c._hieght << std::endl << "Box Volume: " << c.getVolume() << std::endl;;
 	return out;
 }
