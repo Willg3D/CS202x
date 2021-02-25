@@ -77,55 +77,11 @@ std::vector<TokenAndPosition> readFile_tokenizer(string filename) {
 	return tokens;
 }
 
-//std::vector<TokenAndPosition> readFile_tokenizer(string filename) {
-//	//TokenAndPosition token;
-//	std::vector<TokenAndPosition> tokens;
-//	std::ifstream open(filename);
-//	string word;
-//	int line = 0;
-//	unsigned int column = 0;
-//
-//	if (!open) { // quick error check
-//		cout << "Error Can't Load Data!" << std::endl;
-//	}
-//	else {
-//		while (!open.eof()) {
-//			string data;
-//			std::getline(open, data);
-//			//std::istringstream iss(data);
-//			line++;
-//
-//			while (iss >> word) {
-//				tokens.push_back(TokenAndPosition{ word, line, column });
-//				column = column + word.size() + 2;
-//			}
-//		}
-//	}
-//
-//	return tokens;
-//}
-//
-//std::vector<TokenAndPosition> readFile(string filename) {
-//	std::ifstream file;
-//	file.open(filename, std::ifstream::in);
-//	string textLine;
-//
-//	if (!file) {
-//		cout << "ERROR READING FILE...\n";
-//	}
-//	while (!file.eof())	{
-//		getline(file,textLine);
-//		cout << textLine << "\n";
-//	}
-//
-//
-//
-//}
+
 
 
 int main() {
-	//std::string tokens;
-	//std::getline(std::cin, tokens);
+
 	std::vector<TokenAndPosition> tokens_vector = readFile_tokenizer("test.txt");
 
 	for (size_t i = 0; i < tokens_vector.size(); i++)
