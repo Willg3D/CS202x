@@ -6,26 +6,34 @@ using std::string;
 #include <sstream> //istreamstring used for words
 #include <vector>
 
-std::vector<std::string> stringW_to_Vector(const std::string &stringW) {
-	std::string temp;
-	std::vector<std::string> vector;
-	int i = 0;
-	for (size_t x = 0; x <= stringW.size(); x++) {
-		if (stringW[x] != ' ') {
-			temp.push_back(stringW[x]);
-		}
-		if (stringW[x] == ' ' || x == stringW.size()) {
-			vector.push_back(temp);
-			temp.clear();
-			i++;
-		}
-	}
-	return vector;
-}
+//std::vector<std::string> stringW_to_Vector(const std::string &stringW) {
+//	std::string temp;
+//	std::vector<std::string> vector;
+//	int i = 0;
+//	for (size_t x = 0; x <= stringW.size(); x++) {
+//		if (stringW[x] != ' ') {
+//			temp.push_back(stringW[x]);
+//		}
+//		if (stringW[x] == ' ' || x == stringW.size()) {
+//			vector.push_back(temp);
+//			temp.clear();
+//			i++;
+//		}
+//	}
+//	return vector;
+//}
+
+struct TokenAndPosition{
+	string _token;
+	int _line;
+	unsigned int _column;
+};
 
 void readFile_vector(string filename, std::vector<string>& book) {
 	std::ifstream open(filename);
 	string word;
+	int line = 0;
+
 	if (!open) { // quick error check
 		cout << "Error Can't Load Data!" << std::endl;
 	}
@@ -34,6 +42,7 @@ void readFile_vector(string filename, std::vector<string>& book) {
 			string data;
 			std::getline(open, data);
 			std::istringstream iss(data);
+			line++;
 
 			while (iss >> word) {
 				book.push_back(word);
