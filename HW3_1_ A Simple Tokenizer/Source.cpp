@@ -29,7 +29,9 @@ struct TokenAndPosition{
 	unsigned int _column;
 };
 
-void readFile_vector(string filename, std::vector<string>& book) {
+std::vector<TokenAndPosition> readFile_vector(string filename) {
+	//TokenAndPosition token;
+	std::vector<TokenAndPosition> tokens;
 	std::ifstream open(filename);
 	string word;
 	int line = 0;
@@ -45,16 +47,24 @@ void readFile_vector(string filename, std::vector<string>& book) {
 			line++;
 
 			while (iss >> word) {
-				book.push_back(word);
+				tokens.push_back(TokenAndPosition{ word, line, 1 });
 			}
 		}
 	}
+
+	return tokens;
 }
 
 int main() {
 	//std::string tokens;
 	//std::getline(std::cin, tokens);
-	//std::vector<std::string> tokens_vector = stringW_to_Vector(tokens);
+	std::vector<TokenAndPosition> tokens_vector = readFile_vector("test.txt");
+
+	for (size_t i = 0; i < tokens_vector.size(); i++)
+	{
+		cout << tokens_vector[i]._token << " " << tokens_vector[i]._line <<
+			" " << tokens_vector[i]._column << "\n";
+	}
 
 
 
