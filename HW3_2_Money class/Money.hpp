@@ -22,6 +22,9 @@ private:
 };
 
 bool operator!=(const Money& rS, const Money& lS);
+bool operator>(const Money& rS, const Money& lS);
+bool operator<=(const Money& rS, const Money& lS);
+bool operator>=(const Money& rS, const Money& lS);
 
 
 #endif
