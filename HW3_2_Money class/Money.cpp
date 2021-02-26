@@ -2,6 +2,12 @@
 #include<iostream>
 
 
+Money& Money::operator+=(const Money& rS)
+{
+	_cents = _cents + rS._cents;
+	return *this;
+}
+
 Money::Money()// : _cents(0)
 {
 	_cents = 0;
@@ -55,8 +61,14 @@ bool operator<(const Money& rS, const Money& lS)
 
 Money operator+(const Money& rS, const Money& lS)
 {
-	Money temp{ rS._cents + lS._cents };
+	Money temp{lS};
+	temp += rS;
 	return temp;
+}
+
+Money operator-(const Money& lS)
+{
+	return { -lS._cents };
 }
 
 bool operator!=(const Money& rS, const Money& lS)
@@ -77,6 +89,11 @@ bool operator<=(const Money& rS, const Money& lS)
 bool operator>=(const Money& rS, const Money& lS)
 {
 	return !(rS < lS);
+}
+
+Money operator-(const Money& rS, const Money& lS)
+{
+	return { lS + -rS };
 }
 
 

@@ -9,7 +9,7 @@ class Money
 	friend bool operator==(const Money& rS, const Money& lS);
 	friend bool operator<(const Money& rS, const Money& lS);
 	friend Money operator+(const Money& rS, const Money& lS);
-	friend Money operator-(const Money& rS, const Money& lS);
+	friend Money operator-(const Money& lS);
 
 
 public:
@@ -29,5 +29,6 @@ bool operator>(const Money& rS, const Money& lS);
 bool operator<=(const Money& rS, const Money& lS);
 bool operator>=(const Money& rS, const Money& lS);
 
+Money operator-(const Money& rS, const Money& lS);
 
 #endif
