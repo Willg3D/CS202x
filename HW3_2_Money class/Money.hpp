@@ -6,34 +6,46 @@
 class Money
 {
 	friend std::ostream& operator<<(std::ostream&, const Money& cents);
-	friend bool operator==(const Money& rS, const Money& lS);
-	friend bool operator<(const Money& rS, const Money& lS);
-	friend Money operator+(const Money& rS, const Money& lS);
+	friend bool operator==(const Money& lS, const Money& rS);
+	friend bool operator<(const Money& lS, const Money& rS);
+	friend Money operator+(const Money& lS, const Money& rS);
 	friend Money operator-(const Money& lS);
+	friend Money operator*(const double &lS, const Money& rS);
+	friend Money operator*(const Money& lS, const double& rS);
+	friend Money operator/(const double& lS, const Money& rS);
+	friend Money operator/(const Money& lS, const double& rS);
 
 
 public:
-	Money& operator+=(const Money& rS);
-	Money& operator-=(const Money& rS);
-	Money& operator*=(const Money& rS); // not required
-	Money& operator*=(const double& rS);
-	Money& operator/=(const Money& rS); // not required
-	Money& operator/=(const double& rS);
+	Money& operator+=(const Money& lS);
+	Money& operator-=(const Money& lS);
+	Money& operator*=(const Money& lS); // not required
+	Money& operator*=(const double& lS);
+	Money& operator*=(const int& lS);
+	Money& operator/=(const Money& lS); // not required
+	Money& operator/=(const double& lS);
+
 
 	Money(); // Default Constructor
-	Money(int);
-	Money(double); // constructor to set values
+	Money(int = 0);// for cents
+	Money(int = 0, int = 0); // for dollars and cents
+	Money(double); // constructor to set values in dollars
 	Money(const Money&); // Copy constructor
 	~Money(); // Destructor
 private:
 	int _cents;
 };
 
-bool operator!=(const Money& rS, const Money& lS);
-bool operator>(const Money& rS, const Money& lS);
-bool operator<=(const Money& rS, const Money& lS);
-bool operator>=(const Money& rS, const Money& lS);
+bool operator!=(const Money& lS, const Money& rS);
+bool operator>(const Money& lS, const Money& rS);
+bool operator<=(const Money& lS, const Money& rS);
+bool operator>=(const Money& lS, const Money& rS);
 
-Money operator-(const Money& rS, const Money& lS);
+Money operator-(const Money& lS, const Money& rS);
+//Money operator*(Money& lS, const int& rS);
+//Money operator*(const int& lS,Money& rS);
+//Money operator/(Money& rS, const double& lS);
+//Money operator/(const double& rS,Money& lS);
+
 
 #endif

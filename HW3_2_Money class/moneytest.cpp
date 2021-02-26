@@ -100,15 +100,15 @@ TEST_CASE( "Money arithmetic operators") {
    m1 /= 2.0;
    REQUIRE(m1==mc1);
 
-   //REQUIRE(mc1+mc1==mc2);
+   REQUIRE(mc1+mc1==mc2);
 
-   //REQUIRE(mc1-mc1==m0);
+   REQUIRE(mc1-mc1==m0);
 
-   //REQUIRE(2*mc1==mc2);
+   REQUIRE(2*mc1==mc2);
 
-   //REQUIRE(mc1*2==mc2);
+   REQUIRE(mc1*2==mc2);
 
-   //REQUIRE(mc2/2==mc1);
+   REQUIRE(mc2/2==mc1);
 
    //Money m12;
    //m12 = mc1;

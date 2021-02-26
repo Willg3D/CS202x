@@ -3,50 +3,62 @@
 using std::cout;
 
 
-Money& Money::operator+=(const Money& rS)
+Money& Money::operator+=(const Money& lS)
 {
-	_cents = _cents + rS._cents;
+	_cents = _cents + lS._cents;
 	return *this;
 }
 
-Money& Money::operator-=(const Money& rS)
+Money& Money::operator-=(const Money& lS)
 {
-	*this = *this - rS;
+	*this = *this - lS;
 	return *this;
 }
 
-Money& Money::operator*=(const Money& rS)
+Money& Money::operator*=(const Money& lS)
 {
-	_cents *= rS._cents;
+	_cents *= lS._cents;
 	return *this;
 }
 
-Money& Money::operator*=(const double& rS)
+Money& Money::operator*=(const double& lS)
 {
-	_cents *= rS;
+	_cents *= lS;
 	return *this;
 }
 
-Money& Money::operator/=(const Money& rS)
+Money& Money::operator*=(const int& lS)
 {
-	_cents /= rS._cents;
+	_cents *= lS;
 	return *this;
 }
 
-Money& Money::operator/=(const double& rS)
+Money& Money::operator/=(const Money& lS)
 {
-	_cents /= rS;
+	_cents /= lS._cents;
 	return *this;
 }
 
-Money::Money()// : _cents(0)
+Money& Money::operator/=(const double& lS)
 {
-	_cents = 0;
+	_cents /= lS;
+	return *this;
 }
 
-Money::Money(int cash)
+Money::Money() : _cents(0)
 {
-	_cents = cash;
+
+}
+
+Money::Money(int cents): _cents(cents)
+{
+
+}
+
+Money::Money(int dollars, int cents)
+{
+	dollars *= 100;
+	_cents = dollars + cents;
 }
 
 Money::Money(double cash)
@@ -85,14 +97,14 @@ std::ostream& operator<<(std::ostream& os, const Money& cash)
 	return os << "00";
 }
 
-bool operator==(const Money& rS, const Money& lS)
+bool operator==(const Money& lS, const Money& rS)
 {
-	return rS._cents == lS._cents;
+	return lS._cents == rS._cents;
 }
 
-bool operator<(const Money& rS, const Money& lS)
+bool operator<(const Money& lS, const Money& rS)
 {
-	return rS._cents < lS._cents;
+	return lS._cents < rS._cents;
 }
 
 Money operator+(const Money& rS, const Money& lS)
@@ -107,30 +119,67 @@ Money operator-(const Money& lS)
 	return -lS._cents;
 }
 
-bool operator!=(const Money& rS, const Money& lS)
+Money operator*(const double& lS, const Money& rS)
 {
-	return !(rS == lS);
+	Money temp{ (int)lS * rS._cents };
+	return temp;
 }
 
-bool operator>(const Money& rS, const Money& lS)
+Money operator*(const Money& lS, const double& rS)
 {
-	return lS < rS;
+	Money temp{ lS._cents * (int)rS };
+	return temp;
 }
 
-bool operator<=(const Money& rS, const Money& lS)
+Money operator/(const double& lS, const Money& rS)
 {
-	return !(rS > lS);
+	Money temp{ (int)lS / rS._cents };
+	return temp;
 }
 
-bool operator>=(const Money& rS, const Money& lS)
+Money operator/(const Money& lS, const double& rS)
 {
-	return !(rS < lS);
+	Money temp{ lS._cents / (int)rS };
+	return temp;
 }
 
-Money operator-(const Money& rS, const Money& lS)
+
+bool operator!=(const Money& lS, const Money& rS)
 {
-	return { lS + -rS };
+	return !(lS == rS);
 }
+
+bool operator>(const Money& lS, const Money& rS)
+{
+	return rS < lS;
+}
+
+bool operator<=(const Money& lS, const Money& rS)
+{
+	return !(lS > rS);
+}
+
+bool operator>=(const Money& lS, const Money& rS)
+{
+	return !(lS < rS);
+}
+
+Money operator-(const Money& lS, const Money& rS)
+{
+	return rS + -lS;
+}
+//
+//Money operator*(Money& lS, const int& rS)
+//{
+//	
+//	return { lS *= rS };
+//}
+//
+//Money operator*(const int& lS, Money& rS)
+//{
+//	int temp = lS * rS._ce
+//	return { rS *= lS };
+//}
 
 
 
