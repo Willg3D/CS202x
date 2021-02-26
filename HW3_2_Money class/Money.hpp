@@ -6,6 +6,7 @@
 class Money
 {
 	friend std::ostream& operator<<(std::ostream&, const Money& cents);
+	friend bool operator==(const Money& rS, const Money& lS);
 public:
 	Money(); // Default Constructor
 	Money(double); // constructor to set values

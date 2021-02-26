@@ -42,3 +42,8 @@ std::ostream& operator<<(std::ostream& os, const Money& cash)
 	}
 	return os << "00";
 }
+
+bool operator==(const Money& rS, const Money& lS)
+{
+	return rS._cents == lS._cents;
+}

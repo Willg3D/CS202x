@@ -54,33 +54,33 @@ TEST_CASE( "Money ctors and operator<<") {
    REQUIRE(os.str() == "-$7.08");
 }
 
-//TEST_CASE( "Money relational operators"){
-//   const Money m0;
-//   const Money m1(1);
-//
-//   REQUIRE( (m0==m0));
-//   REQUIRE(!(m0==m1));
-//
-//   REQUIRE(!(m0!=m0));
-//   REQUIRE( (m0!=m1));
-//
-//   REQUIRE(!(m0< m0));
-//   REQUIRE( (m0< m1));
-//   REQUIRE(!(m1< m0));
-//
-//   REQUIRE( (m0<=m0));
-//   REQUIRE( (m0<=m1));
-//   REQUIRE(!(m1<=m0));
-//
-//   REQUIRE(!(m0> m0));
-//   REQUIRE(!(m0> m1));
-//   REQUIRE( (m1> m0));
-//
-//   REQUIRE( (m0>=m0));
-//   REQUIRE(!(m0>=m1));
-//   REQUIRE( (m1>=m0));
-//}
-//
+TEST_CASE( "Money relational operators"){
+   const Money m0;
+   const Money m1(1);
+
+   REQUIRE( (m0==m0));
+   REQUIRE(!(m0==m1));
+
+   REQUIRE(!(m0!=m0));
+   REQUIRE( (m0!=m1));
+
+   REQUIRE(!(m0< m0));
+   REQUIRE( (m0< m1));
+   REQUIRE(!(m1< m0));
+
+   REQUIRE( (m0<=m0));
+   REQUIRE( (m0<=m1));
+   REQUIRE(!(m1<=m0));
+
+   REQUIRE(!(m0> m0));
+   REQUIRE(!(m0> m1));
+   REQUIRE( (m1> m0));
+
+   REQUIRE( (m0>=m0));
+   REQUIRE(!(m0>=m1));
+   REQUIRE( (m1>=m0));
+}
+
 //TEST_CASE( "Money arithmetic operators") {
 //   const Money m0;
 //   Money m1(1);
