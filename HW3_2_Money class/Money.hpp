@@ -8,9 +8,12 @@ class Money
 	friend std::ostream& operator<<(std::ostream&, const Money& cents);
 	friend bool operator==(const Money& rS, const Money& lS);
 	friend bool operator<(const Money& rS, const Money& lS);
+	friend Money operator+(const Money& rS, const Money& lS);
+	friend Money operator-(const Money& rS, const Money& lS);
 
 
 public:
+	Money& operator+=(const Money& rS);
 
 
 	Money(); // Default Constructor

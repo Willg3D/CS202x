@@ -53,6 +53,12 @@ bool operator<(const Money& rS, const Money& lS)
 	return rS._cents < lS._cents;
 }
 
+Money operator+(const Money& rS, const Money& lS)
+{
+	Money temp{ rS._cents + lS._cents };
+	return temp;
+}
+
 bool operator!=(const Money& rS, const Money& lS)
 {
 	return !(rS == lS);
