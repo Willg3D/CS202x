@@ -16,6 +16,7 @@ class Money
 	friend Money operator/(const Money& lS, const double& rS);
 
 
+
 public:
 	Money& operator+=(const Money& lS);
 	Money& operator-=(const Money& lS);
@@ -24,11 +25,12 @@ public:
 	Money& operator*=(const int& lS);
 	Money& operator/=(const Money& lS); // not required
 	Money& operator/=(const double& lS);
+	Money& operator=(const Money& lS);
 
 
 	Money(); // Default Constructor
-	Money(int = 0);// for cents
-	Money(int = 0, int = 0); // for dollars and cents
+	Money(int);// for cents
+	Money(int, int); // for dollars and cents
 	Money(double); // constructor to set values in dollars
 	Money(const Money&); // Copy constructor
 	~Money(); // Destructor

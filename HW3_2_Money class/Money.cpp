@@ -45,6 +45,13 @@ Money& Money::operator/=(const double& lS)
 	return *this;
 }
 
+Money& Money::operator=(const Money& lS)
+{
+	_cents = lS._cents;
+	return *this;
+
+}
+
 Money::Money() : _cents(0)
 {
 

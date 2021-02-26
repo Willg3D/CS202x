@@ -110,22 +110,22 @@ TEST_CASE( "Money arithmetic operators") {
 
    REQUIRE(mc2/2==mc1);
 
-   //Money m12;
-   //m12 = mc1;
-   //REQUIRE(m12 == mc1);
+   Money m12;
+   m12 = mc1;
+   REQUIRE(m12 == mc1);
 
-   //(m2 -= mc1) = m0;
-   //REQUIRE(m2==m0);
+   (m2 -= mc1) = m0;
+   REQUIRE(m2==m0);
 
-   //(m2 += mc1) = m0;
-   //REQUIRE(m2==m0);
+   (m2 += mc1) = m0;
+   REQUIRE(m2==m0);
 
-   //m2 = Money(4.2);
-   //(m2 /= 2.0) = m0;
-   //REQUIRE(m2==m0);
+   m2 = Money(4.2);
+   (m2 /= 2.0) = m0;
+   REQUIRE(m2==m0);
 
-   //m2 = Money(4.2);
-   //(m2 *= 2.0) = m0;
-   //REQUIRE(m2==m0);
+   m2 = Money(4.2);
+   (m2 *= 2.0) = m0;
+   REQUIRE(m2==m0);
 }
 
