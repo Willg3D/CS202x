@@ -4,9 +4,10 @@ using std::cout;
 using std::string;
 #include <fstream>
 #include <istream>
-#include <ostream>
+//#include <ostream> not in use
 #include <vector>
 using std::vector;
+#include "StopWatch.h"
 
 
 //std::vector<std::string> stringW_to_Vector(const std::string &stringW) {
@@ -88,8 +89,8 @@ void printTokens(const string lineonly, const vector<TokenAndPosition>& tokens) 
 				tokens[i]._token << "\"" << std::endl;
 		}
 		else{
-			cout << "Line  " << tokens[i]._line <<
-				", Column " << tokens[i]._column << ": ''" << std::endl;
+			cout << "Line  " << tokens[i]._line << ": \"" <<
+				tokens[i]._token << "\"" << std::endl;
 		}
 		
 	}
@@ -97,12 +98,25 @@ void printTokens(const string lineonly, const vector<TokenAndPosition>& tokens) 
 
 
 int main(int argc, char* argv[]) {
-	string startWord = argv[1];
-	if (startWord == "tokenizer") {
-		std::vector<TokenAndPosition> tokens_vector = readFile_tokenizer(argv[2]);
+	// Big Note for some reason in Visual Studios argc by default is 1 and
+	// first element in argv is nonsense. Command arguments start at argv[1]
+	string startWord = argv[1]; // "tokenizer"
+	Stopwatch readtime;
+	std::vector<TokenAndPosition> tokens_vector = readFile_tokenizer(argv[2]);
+	readtime.stop();
+	Stopwatch printtime;
+	// determine if line only should print
+	if (startWord == "tokenizer" && argc == 4) {
 		printTokens(argv[3], tokens_vector);
 	}
+	else if(startWord == "tokenizer" && argc == 3){
+		printTokens("", tokens_vector);
+	}
 	if (startWord != "tokenizer") { return 1; }
+	printtime.stop();
+	cout << "Read Time msec: " << readtime.time_msec() << std::endl;
+	cout << "Print Time msec: " << printtime.time_msec() << std::endl;
+
 
 	return 0;
 }
