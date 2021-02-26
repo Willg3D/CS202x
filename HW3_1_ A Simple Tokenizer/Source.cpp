@@ -8,6 +8,7 @@ using std::string;
 #include <vector>
 using std::vector;
 
+
 //std::vector<std::string> stringW_to_Vector(const std::string &stringW) {
 //	std::string temp;
 //	std::vector<std::string> vector;
@@ -80,17 +81,18 @@ std::vector<TokenAndPosition> readFile_tokenizer(string filename) {
 
 
 
-int main() {
+int main(int argc, char* argv[]) {
+	string startWord = argv[1];
+	if (startWord == "tokenizer") {
+		std::vector<TokenAndPosition> tokens_vector = readFile_tokenizer(argv[2]);
 
-	std::vector<TokenAndPosition> tokens_vector = readFile_tokenizer("test.txt");
-
-	for (size_t i = 0; i < tokens_vector.size(); i++)
-	{
-		cout << tokens_vector[i]._token << " " << tokens_vector[i]._line <<
-			" " << tokens_vector[i]._column << "\n";
+		for (size_t i = 0; i < tokens_vector.size(); i++)
+		{
+			cout << tokens_vector[i]._token << " " << tokens_vector[i]._line <<
+				" " << tokens_vector[i]._column << "\n";
+		}
 	}
-
-
+	if (startWord != "tokenizer") { return 1; }
 
 	return 0;
 }
