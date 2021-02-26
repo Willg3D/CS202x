@@ -71,6 +71,7 @@ std::vector<TokenAndPosition> readFile_tokenizer(string filename) {
 				column = column + temp[i].size() + 2;
 
 			}
+			column = 0;
 
 		}
 	}
@@ -78,19 +79,28 @@ std::vector<TokenAndPosition> readFile_tokenizer(string filename) {
 	return tokens;
 }
 
+void printTokens(const string lineonly, const vector<TokenAndPosition>& tokens) {
 
+	for (size_t i = 0; i < tokens.size(); i++){
+		if (lineonly != "--lineonly"){
+			cout << "Line  " << tokens[i]._line <<
+				", Column " << tokens[i]._column << ": \"" <<
+				tokens[i]._token << "\"" << std::endl;
+		}
+		else{
+			cout << "Line  " << tokens[i]._line <<
+				", Column " << tokens[i]._column << ": ''" << std::endl;
+		}
+		
+	}
+}
 
 
 int main(int argc, char* argv[]) {
 	string startWord = argv[1];
 	if (startWord == "tokenizer") {
 		std::vector<TokenAndPosition> tokens_vector = readFile_tokenizer(argv[2]);
-
-		for (size_t i = 0; i < tokens_vector.size(); i++)
-		{
-			cout << tokens_vector[i]._token << " " << tokens_vector[i]._line <<
-				" " << tokens_vector[i]._column << "\n";
-		}
+		printTokens(argv[3], tokens_vector);
 	}
 	if (startWord != "tokenizer") { return 1; }
 
