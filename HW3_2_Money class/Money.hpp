@@ -14,9 +14,13 @@ class Money
 
 public:
 	Money& operator+=(const Money& rS);
+	Money& operator-=(const Money& rS);
+	Money& operator*=(const Money& rS);
+	Money& operator/=(const Money& rS);
 
 
 	Money(); // Default Constructor
+	Money(int);
 	Money(double); // constructor to set values
 	Money(const Money&); // Copy constructor
 	~Money(); // Destructor

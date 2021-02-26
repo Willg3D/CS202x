@@ -1,5 +1,6 @@
 #include "Money.hpp"
 #include<iostream>
+using std::cout;
 
 
 Money& Money::operator+=(const Money& rS)
@@ -8,9 +9,32 @@ Money& Money::operator+=(const Money& rS)
 	return *this;
 }
 
+Money& Money::operator-=(const Money& rS)
+{
+	*this = *this - rS;
+	return *this;
+}
+
+Money& Money::operator*=(const Money& rS)
+{
+	_cents *= rS._cents;
+	return *this;
+}
+
+Money& Money::operator/=(const Money& rS)
+{
+	_cents /= rS._cents;
+	return *this;
+}
+
 Money::Money()// : _cents(0)
 {
 	_cents = 0;
+}
+
+Money::Money(int cash)
+{
+	_cents = cash;
 }
 
 Money::Money(double cash)
@@ -68,7 +92,7 @@ Money operator+(const Money& rS, const Money& lS)
 
 Money operator-(const Money& lS)
 {
-	return { -lS._cents };
+	return -lS._cents;
 }
 
 bool operator!=(const Money& rS, const Money& lS)
