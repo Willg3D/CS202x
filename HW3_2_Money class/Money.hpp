@@ -5,9 +5,10 @@
 
 class Money
 {
+	friend std::ostream& operator<<(std::ostream&, const Money& cents);
 public:
 	Money(); // Default Constructor
-	Money(int); // constructor to set values
+	Money(double); // constructor to set values
 	Money(const Money&); // Copy constructor
 	~Money(); // Destructor
 private:
