@@ -21,9 +21,21 @@ Money& Money::operator*=(const Money& rS)
 	return *this;
 }
 
+Money& Money::operator*=(const double& rS)
+{
+	_cents *= rS;
+	return *this;
+}
+
 Money& Money::operator/=(const Money& rS)
 {
 	_cents /= rS._cents;
+	return *this;
+}
+
+Money& Money::operator/=(const double& rS)
+{
+	_cents /= rS;
 	return *this;
 }
 

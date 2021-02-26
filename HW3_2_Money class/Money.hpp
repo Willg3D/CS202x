@@ -15,9 +15,10 @@ class Money
 public:
 	Money& operator+=(const Money& rS);
 	Money& operator-=(const Money& rS);
-	Money& operator*=(const Money& rS);
-	Money& operator/=(const Money& rS);
-
+	Money& operator*=(const Money& rS); // not required
+	Money& operator*=(const double& rS);
+	Money& operator/=(const Money& rS); // not required
+	Money& operator/=(const double& rS);
 
 	Money(); // Default Constructor
 	Money(int);
