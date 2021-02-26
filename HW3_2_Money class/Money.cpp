@@ -20,9 +20,11 @@ Money::~Money()
 {
 }
 
-std::ostream& operator<<(std::ostream& os, const Money& money)
+std::ostream& operator<<(std::ostream& os, const Money& cash)
 {
-	double dolars = (double)money._cents;
-	dolars /= 100;
-	return os << "$" << dolars;
+	int cent_value = (cash._cents % 100);
+	if (cent_value < 0) { cent_value *= -1; }
+	os << "$" << (cash._cents - cent_value)/100 << ".";
+	if (cent_value != 0) { return os << cent_value; }
+	return os << "00";
 }

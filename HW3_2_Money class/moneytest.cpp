@@ -6,10 +6,11 @@
 #include "Money.hpp"   // Double inclusion test
 
 TEST_CASE("Temp Test") {
-	const Money con0(12.12);
+	const Money con0(-12.32);
 	std::ostringstream os;
 	os << con0;
-	REQUIRE(os.str() == "$12.12");
+	std::cout << con0;
+	REQUIRE(os.str() == "$12.00");
 }
 
 //TEST_CASE( "Money ctors and operator<<") {
