@@ -7,7 +7,12 @@ class Money
 {
 	friend std::ostream& operator<<(std::ostream&, const Money& cents);
 	friend bool operator==(const Money& rS, const Money& lS);
+	friend bool operator<(const Money& rS, const Money& lS);
+
+
 public:
+
+
 	Money(); // Default Constructor
 	Money(double); // constructor to set values
 	Money(const Money&); // Copy constructor
@@ -15,4 +20,8 @@ public:
 private:
 	int _cents;
 };
+
+bool operator!=(const Money& rS, const Money& lS);
+
+
 #endif
