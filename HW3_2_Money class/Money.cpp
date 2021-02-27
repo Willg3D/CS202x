@@ -1,3 +1,6 @@
+// William Glass
+// HW3
+// CS202x
 #include "Money.hpp"
 #include<iostream>
 using std::cout;
@@ -15,11 +18,11 @@ Money& Money::operator-=(const Money& lS)
 	return *this;
 }
 
-Money& Money::operator*=(const Money& lS)
-{
-	_cents *= lS._cents;
-	return *this;
-}
+//Money& Money::operator*=(const Money& lS)
+//{
+//	_cents *= lS._cents;
+//	return *this;
+//}
 
 Money& Money::operator*=(const double& lS)
 {
@@ -33,11 +36,11 @@ Money& Money::operator*=(const int& lS)
 	return *this;
 }
 
-Money& Money::operator/=(const Money& lS)
-{
-	_cents /= lS._cents;
-	return *this;
-}
+//Money& Money::operator/=(const Money& lS)
+//{
+//	_cents /= lS._cents;
+//	return *this;
+//}
 
 Money& Money::operator/=(const double& lS)
 {
@@ -70,11 +73,10 @@ Money::Money(int dollars, int cents)
 
 Money::Money(double cash)
 {
-
-	cash *= 100;
+	cash *= 100; // converts for rounding
 	if ((cash - floor(cash)) >= 0.5){cash = ceil(cash);}
 	else{cash = floor(cash);}
-	_cents =  cash;
+	_cents =  (int)cash;
 }
 
 Money::Money(const Money& old) : _cents(old._cents)
@@ -86,22 +88,22 @@ Money::~Money()
 }
 
 std::ostream& operator<<(std::ostream& os, const Money& cash)
-{
-	int cent_value = (cash._cents % 100);
-	if (cent_value < 0) { cent_value *= -1; }
-	if (cash._cents >= 0){
+{	//inefficient way to print values, oh well.
+	int cent_value = (cash._cents % 100); // finds cent values
+	if (cent_value < 0) { cent_value *= -1; } // converts - value to +
+	if (cash._cents >= 0){ // for + values
 		os << "$" << (cash._cents - cent_value) / 100 << ".";
 	}
-	if (cash._cents < 0) {
+	if (cash._cents < 0) {	// for - values (so - is in front of $)
 		os << "-$" << ((cash._cents - cent_value) / 100)*-1 << ".";
 	}
 	if (cent_value != 0) {
-		if (cent_value < 10) {
-			return os << "0" << cent_value;
+		if (cent_value < 10) {// in case cent value is less than 10
+			return os << "0" << cent_value;	// returns value so that there are 2 digits after .
 		}
-		return os << cent_value;
+		return os << cent_value;// returns cent value if >10
 	}
-	return os << "00";
+	return os << "00";	// in case cent value is zero
 }
 
 bool operator==(const Money& lS, const Money& rS)
@@ -175,18 +177,7 @@ Money operator-(const Money& lS, const Money& rS)
 {
 	return rS + -lS;
 }
-//
-//Money operator*(Money& lS, const int& rS)
-//{
-//	
-//	return { lS *= rS };
-//}
-//
-//Money operator*(const int& lS, Money& rS)
-//{
-//	int temp = lS * rS._ce
-//	return { rS *= lS };
-//}
+
 
 
 

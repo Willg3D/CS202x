@@ -1,17 +1,10 @@
 #define CATCH_CONFIG_MAIN  // This tells Catch to provide a main() - only do this in one cpp file
-#include "catch.hpp"
+#include "catch.hpp"	// <----- NEEDED TO EDIT TO WORK
 #include <sstream>      // for std::ostringstream
 
 #include "Money.hpp"
 #include "Money.hpp"   // Double inclusion test
 
-//TEST_CASE("Temp Test") {
-//	const Money con0(-12.32);
-//	std::ostringstream os;
-//	os << con0;
-//	std::cout << con0;
-//	REQUIRE(os.str() == "$12.00");
-//}
 
 TEST_CASE( "Money ctors and operator<<") {
    const Money con0;

@@ -1,3 +1,6 @@
+// William Glass
+// HW3
+// CS202x
 #ifndef Money_HPP
 #define Money_HPP
 #include<iostream>
@@ -20,10 +23,10 @@ class Money
 public:
 	Money& operator+=(const Money& lS);
 	Money& operator-=(const Money& lS);
-	Money& operator*=(const Money& lS); // not required
+	//Money& operator*=(const Money& lS); // not required
 	Money& operator*=(const double& lS);
 	Money& operator*=(const int& lS);
-	Money& operator/=(const Money& lS); // not required
+	//Money& operator/=(const Money& lS); // not required
 	Money& operator/=(const double& lS);
 	Money& operator=(const Money& lS);
 
@@ -44,10 +47,6 @@ bool operator<=(const Money& lS, const Money& rS);
 bool operator>=(const Money& lS, const Money& rS);
 
 Money operator-(const Money& lS, const Money& rS);
-//Money operator*(Money& lS, const int& rS);
-//Money operator*(const int& lS,Money& rS);
-//Money operator/(Money& rS, const double& lS);
-//Money operator/(const double& rS,Money& lS);
 
 
 #endif
