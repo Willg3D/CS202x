@@ -1,10 +1,12 @@
+// William Glass
+// HW3
+// CS202x
 #include <iostream>
 using std::cout;
 #include <string>
 using std::string;
 #include <fstream>
 #include <istream>
-//#include <ostream> not in use
 #include <vector>
 using std::vector;
 #include "StopWatch.h"
@@ -27,12 +29,14 @@ using std::vector;
 //	return vector;
 //}
 
+// struct for tokens
 struct TokenAndPosition{
 	string _token;
 	int _line;
 	unsigned int _column;
 };
 
+// finds tokens in lines
 vector<string> lineToTokens(const string& line) {
 	std::string temp;
 	std::vector<std::string> vector;
@@ -50,6 +54,7 @@ vector<string> lineToTokens(const string& line) {
 	return vector;
 }
 
+// read files to find tokens, lines, and columns
 std::vector<TokenAndPosition> readFile_tokenizer(string filename) {
 	//TokenAndPosition token;
 	std::vector<string> temp;
@@ -76,10 +81,10 @@ std::vector<TokenAndPosition> readFile_tokenizer(string filename) {
 
 		}
 	}
-
 	return tokens;
 }
 
+// Prints Tokens
 void printTokens(const string lineonly, const vector<TokenAndPosition>& tokens) {
 
 	for (size_t i = 0; i < tokens.size(); i++){
@@ -98,13 +103,13 @@ void printTokens(const string lineonly, const vector<TokenAndPosition>& tokens) 
 
 
 int main(int argc, char* argv[]) {
-	// Big Note for some reason in Visual Studios argc by default is 1 and
+	// Big Note: For some reason in Visual Studios argc by default is 1 and
 	// first element in argv is nonsense. Command arguments start at argv[1]
 	string startWord = argv[1]; // "tokenizer"
-	Stopwatch readtime;
+	Stopwatch readtime; // time for reading
 	std::vector<TokenAndPosition> tokens_vector = readFile_tokenizer(argv[2]);
 	readtime.stop();
-	Stopwatch printtime;
+	Stopwatch printtime; // time for printing
 	// determine if line only should print
 	if (startWord == "tokenizer" && argc == 4) {
 		printTokens(argv[3], tokens_vector);

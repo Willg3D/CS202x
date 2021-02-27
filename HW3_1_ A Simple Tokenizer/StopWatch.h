@@ -1,3 +1,6 @@
+// William Glass
+// HW3
+// CS202x
 #ifndef StopWatch_H
 #define StopWatch_H
 #include<iostream>
